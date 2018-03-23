@@ -20,7 +20,7 @@
                                     <a class="nav-link " href="#tab31" data-toggle="tab"><span>3</span>Finish</a>
                                 </li>
                             </ul>
-                            <form action="" method="post" >
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="tab-content m-t-20">
                                     <div class="tab-pane" id="tab11">
                                         <?php include_once "includes/admissions/_1.php"?>

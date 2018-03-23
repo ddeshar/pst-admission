@@ -88,22 +88,48 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-sm-12 m-t-35">
+                <h5>Image Upload</h5>
+                <input id="input-21" name="image" type="file" accept="image/*" class="file-loading">
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- <div class="col-lg-12 input_field_sections">
-        <div class="form-check row">
-            <div class="col-lg-11 push-lg-1">
-                <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">Keep me logged in</span>
-                </label>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-lg-11 push-lg-1">
-                <input class="btn btn-primary layout_btn_prevent" type="submit" name="create_post" value="Publish Post">                                            
-                <button class="btn btn-warning layout_btn_prevent">Cancel</button>
-            </div>
-        </div>
-    </div> -->
+<div class="row">
+    <div class="col-lg-6 input_field_sections">
+        <h5>บุคคลที่ผ่ามาสมัคร </h5>
+        <select class="form-control" name="newstu_user_id" tabindex="7">
+            <?php 
+                $users_query = "SELECT * FROM users";
+                $query_users = mysqli_query($connection, $users_query);
+                if(mysqli_num_rows($query_users) > 0){
+                    while($users = mysqli_fetch_assoc($query_users)){
+            ?>
+            <option value="<?php echo $users["user_id"] ?>"><?php echo $users["firstname"] ?></option>
+            <?php
+                    }
+                }
+            ?>
+        </select>
+    </div>
+
+    <div class="col-lg-6 input_field_sections">
+        <h5>นักเรียนได้รับข่าวสารจากใหน </h5>
+        <select class="form-control" name="newstu_get_notice_from" tabindex="7">
+            <?php 
+                $users_query = "SELECT * FROM users";
+                $query_users = mysqli_query($connection, $users_query);
+                if(mysqli_num_rows($query_users) > 0){
+                    while($users = mysqli_fetch_assoc($query_users)){
+            ?>
+            <option value="<?php echo $users["user_id"] ?>"><?php echo $users["firstname"] ?></option>
+            <?php
+                    }
+                }
+            ?>
+        </select>
+    </div>
 </div>

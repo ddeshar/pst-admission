@@ -1,6 +1,6 @@
 <?php
     if(isset($_POST['create_post'])) {
-        var_dump($_POST);
+        // var_dump($_POST);
 
         $address_no                 = mysqli_real_escape_string($connection, $_POST['address_no']);
         $address_moo                = mysqli_real_escape_string($connection, $_POST['address_moo']);
@@ -16,7 +16,7 @@
 
         if (mysqli_query($connection, $address)) {
             $last_address = mysqli_insert_id($connection);
-            echo $address . "<br>";            
+            // echo $address . "<br>";            
         } else {
             echo "Error: " . $address . "<br>" . mysqli_error($connection);
         }
@@ -36,7 +36,7 @@
 
         if (mysqli_query($connection, $parents)) {
             $last_parents = mysqli_insert_id($connection);
-            echo $parents . "<br>";            
+            // echo $parents . "<br>";            
         } else {
             echo "Error: " . $parents . "<br>" . mysqli_error($connection);
         }
@@ -53,7 +53,7 @@
 
         if (mysqli_query($connection, $siblings)) {
             $last_siblings = mysqli_insert_id($connection);
-            echo $siblings . "<br>";            
+            // echo $siblings . "<br>";            
         } else {
             echo "Error: " . $siblings . "<br>" . mysqli_error($connection);
         }
@@ -81,7 +81,7 @@
 
         if (mysqli_query($connection, $education)) {
             $last_education = mysqli_insert_id($connection);
-            echo $education . "<br>";            
+            // echo $education . "<br>";            
         } else {
             echo "Error: " . $education . "<br>" . mysqli_error($connection);
         }    
@@ -99,7 +99,7 @@
 
         if (mysqli_query($connection, $naktham)) {
             $last_naktham = mysqli_insert_id($connection);
-            echo $naktham . "<br>";            
+            // echo $naktham . "<br>";            
         } else {
             echo "Error: " . $naktham . "<br>" . mysqli_error($connection);
         }       
@@ -117,7 +117,7 @@
 
         if (mysqli_query($connection, $pali)) {
             $last_pali = mysqli_insert_id($connection);
-            echo $pali . "<br>";            
+            // echo $pali . "<br>";            
         } else {
             echo "Error: " . $pali . "<br>" . mysqli_error($connection);
         }      
@@ -134,7 +134,7 @@
 
         if (mysqli_query($connection, $guardians)) {
             $last_guardians = mysqli_insert_id($connection);
-            echo $guardians . "<br>";            
+            // echo $guardians . "<br>";            
         } else {
             echo "Error: " . $guardians . "<br>" . mysqli_error($connection);
         }
@@ -152,7 +152,7 @@
 
         if (mysqli_query($connection, $wats)) {
             $last_wats = mysqli_insert_id($connection);
-            echo $wats . "<br>";            
+            // echo $wats . "<br>";            
         } else {
             echo "Error: " . $wats . "<br>" . mysqli_error($connection);
         }
@@ -175,7 +175,7 @@
 
         if (mysqli_query($connection, $eviedence)) {
             $last_eviedence = mysqli_insert_id($connection);
-            echo $eviedence . "<br>";            
+            // echo $eviedence . "<br>";
         } else {
             echo "Error: " . $eviedence . "<br>" . mysqli_error($connection);
         }
@@ -194,33 +194,25 @@
         $newstu_houseno             = mysqli_real_escape_string($connection, $_POST['newstu_houseno']);
         $newstu_best_sub            = mysqli_real_escape_string($connection, $_POST['newstu_best_sub']);
         $newstu_worst_sub           = mysqli_real_escape_string($connection, $_POST['newstu_worst_sub']);
-        $newstu_get_notice_from     = ' ';
-        $newstu_photo               = ' ';
-        $newstu_user_id             = ' ';
+        $newstu_get_notice_from     = mysqli_real_escape_string($connection, $_POST['newstu_get_notice_from']);
+        $newstu_user_id             = mysqli_real_escape_string($connection, $_POST['newstu_user_id']);
+        
+        //แยกระหว่างชื่อกับนามสกุล
+        $temp = explode(".", $_FILES["image"]["name"]);
+        //ให้เปลี่ยนชื่อตามเวลาโดยใช้ฟังก์ชั่น
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+        // หลังจากที่เปลี่ยนชื่อแล้ว จะไปอัพโหลดที่ โฟเดอร์ asset/uploads
+        move_uploaded_file($_FILES["image"]["tmp_name"], dirname($_SERVER['DOCUMENT_ROOT']) .'/admission/assets/img/newstu/' . $newfilename);
 
         $newstudent="INSERT INTO `newstudent`(`newstu_titlename`, `newstu_name`, `newstu_lastname`, `newstu_chaya`, `newstu_petname`, `newstu_dob`, `newstu_bgroup`, `newstu_weight`, `newstu_height`, `newstu_nationalid`, `newstu_houseno`, `newstu_photo`, `newstu_get_notice_from`, `newstu_parents_id`, `newstu_sibling_id`, `newstu_wat_id`, `newstu_guardian_id`, `newstu_naktham_id`, `newstu_pali_id`, `newstu_education_id`, `newstu_address_id`, `newstu_evi_id`, `newstu_user_id`, `newstu_best_sub`, `newstu_worst_sub`, `created_at`, `newstu_admit_class`) 
-        VALUES ('$newstu_titlename', '$newstu_name', '$newstu_lastname', '$newstu_chaya', '$newstu_petname', '$newstu_dob', '$newstu_bgroup', '$newstu_weight', '$newstu_height', '$newstu_nationalid', '$newstu_houseno', '$newstu_photo', '$newstu_get_notice_from', '$last_parents', '$last_siblings', '$last_wats','$last_guardians','$last_naktham','$last_pali','$last_education','$last_address','$last_eviedence','$newstu_user_id','$newstu_best_sub', '$newstu_worst_sub', NOW(), '$newstu_admit_class')";
+        VALUES ('$newstu_titlename', '$newstu_name', '$newstu_lastname', '$newstu_chaya', '$newstu_petname', '$newstu_dob', '$newstu_bgroup', '$newstu_weight', '$newstu_height', '$newstu_nationalid', '$newstu_houseno', '$newfilename', '$newstu_get_notice_from', '$last_parents', '$last_siblings', '$last_wats','$last_guardians','$last_naktham','$last_pali','$last_education','$last_address','$last_eviedence','$newstu_user_id','$newstu_best_sub', '$newstu_worst_sub', NOW(), '$newstu_admit_class')";
 
         if (mysqli_query($connection, $newstudent)) {
             $last_newstudent = mysqli_insert_id($connection);
-            echo $newstudent . "<br>";            
+            // echo $newstudent . "<br>";
         } else {
             echo "Error: " . $newstudent . "<br>" . mysqli_error($connection);
-        } 
-        
-        // //แยกระหว่างชื่อกับนามสกุล
-        // $temp = explode(".", $_FILES["image"]["name"]);
-        // //ให้เปลี่ยนชื่อตามเวลาโดยใช้ฟังก์ชั่น
-        // $newfilename = round(microtime(true)) . '.' . end($temp);
-        // // หลังจากที่เปลี่ยนชื่อแล้ว จะไปอัพโหลดที่ โฟเดอร์ asset/uploads
-        // move_uploaded_file($_FILES["image"]["tmp_name"], "../images/" . $newfilename);
-  
-        // $query = "INSERT INTO posts(post_category_id, post_title,post_author, post_user, post_date,post_image,post_content,post_tags,post_status) ";
-        // $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}','{$post_user}',now(),'{$newfilename}','{$post_content}','{$post_tags}', '{$post_status}') ";
-        // $create_post_query = mysqli_query($connection, $query);
-        // confirmQuery($create_post_query);
-        // $the_post_id = mysqli_insert_id($connection);
-        // echo "<p class='bg-success'>Post Created. <a href='../post.php?p_id={$the_post_id}'>View Post </a> or <a href='posts.php'>Edit More Posts</a></p>";
+        }
     }
 
 include_once '_form.php'; ?>
