@@ -15,6 +15,8 @@ if ($source == "add" || $source == "edit") {
         <link type="text/css" rel="stylesheet" href="assets/vendors/bootstrap-switch/css/bootstrap-switch.min.css"/>
         <link type="text/css" rel="stylesheet" href="assets/vendors/jasny-bootstrap/css/jasny-bootstrap.min.css"/>
         <link type="text/css" rel="stylesheet" href="assets/vendors/fileinput/css/fileinput.min.css"/>
+
+        <link rel="stylesheet" href="assets/jquery.Thailand.js/dist/jquery.Thailand.min.css">
     <!--End of plugin styles-->
 
     <!--Page level styles-->
@@ -23,6 +25,26 @@ if ($source == "add" || $source == "edit") {
     <!-- end page level scripts -->
 EOD;
     $global_scripts_js = <<<EOD
+
+    <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-33058582-1', 'auto', {
+        'name': 'Main'
+    });
+    ga('Main.send', 'event', 'jquery.Thailand.js', 'GitHub', 'Visit');
+</script>
+
+
     <!-- plugin level scripts -->
         <script type="text/javascript" src="assets/vendors/jquery.uniform/js/jquery.uniform.js"></script>
         <script type="text/javascript" src="assets/vendors/inputlimiter/js/jquery.inputlimiter.js"></script>
@@ -53,6 +75,50 @@ EOD;
     <!--Page level scripts-->
         <script type="text/javascript" src="assets/js/pages/wizard.js"></script>
     <!-- end page level scripts -->
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script
+
+    <script type="text/javascript" src="assets/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script type="text/javascript" src="assets/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    
+    <script type="text/javascript" src="assets/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    
+    <script type="text/javascript">
+        $.Thailand({
+            database: 'assets/jquery.Thailand.js/database/db.json', 
+
+            $district: $('#demo1 [name="district"]'),
+            $amphoe: $('#demo1 [name="amphoe"]'),
+            $province: $('#demo1 [name="province"]'),
+            $zipcode: $('#demo1 [name="zipcode"]'),
+
+            onDataFill: function(data){
+                console.info('Data Filled', data);
+            },
+
+            onLoad: function(){
+                console.info('Autocomplete is ready!');
+                $('#loader, .demo').toggle();
+            }
+        });
+
+        // watch on change
+        $('#demo1 [name="district"]').change(function(){
+            console.log('ตำบล', this.value);
+        });
+        $('#demo1 [name="amphoe"]').change(function(){
+            console.log('อำเภอ', this.value);
+        });
+        $('#demo1 [name="province"]').change(function(){
+            console.log('จังหวัด', this.value);
+        });
+        $('#demo1 [name="zipcode"]').change(function(){
+            console.log('รหัสไปรษณีย์', this.value);
+        });
+    </script>
+
 EOD;
 } else if ($source == "profile"){
     $global_scripts_css = <<<EOD

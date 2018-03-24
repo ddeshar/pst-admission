@@ -20,20 +20,42 @@
                         <table class="table  table-striped table-bordered table-hover dataTable no-footer" id="editable_table" role="grid">
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">Username</th>
-                                    <th class="sorting wid-25" tabindex="0" rowspan="1" colspan="1">E-Mail</th>
-                                    <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">Gender</th>
-                                    <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">City</th>
-                                    <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">Status</th>
+                                    <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">ที่</th>
+                                    <th class="sorting wid-25" tabindex="0" rowspan="1" colspan="1">ชื่อ</th>
+                                    <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">ชันที่สมัคร</th>
+                                    <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">จังหวัด</th>
+                                    <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">วันที่มาสมัคร</th>
                                     <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php 
+                                $sql= "SELECT
+                                            newstudent.newstu_id,
+                                            CONCAT(newstudent.newstu_titlename, newstudent.newstu_name,' ', newstudent.newstu_lastname,' ', newstudent.newstu_chaya ) AS `name`,
+                                            newstudent.created_at,
+                                            class.class_name,
+                                            address.address_provience 
+                                        FROM
+                                            newstudent
+                                            INNER JOIN class ON newstudent.newstu_admit_class = class.class_id
+                                            INNER JOIN address ON newstudent.newstu_address_id = address.address_id";
+                                        $result = mysqli_query($connection, $sql);
+                                        if (mysqli_num_rows($result) > 0){
+                                            $i = 1;
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $newstu_id              = $row['newstu_id'];
+                                                $name                   = $row['name'];
+                                                $class_name            = $row['class_name'];
+                                                $address_provience        = $row['address_provience'];
+                                                $created_at             = $row['created_at'];
+                            ?>
                                 <tr role="row" class="even">
-                                    <td class="sorting_1">Breanna15</td>
-                                    <td>Breanna.Ratke@hotmail.com</td>
-                                    <td>Male</td><td class="center">North Jadaton</td>
-                                    <td class="center">Approved</td>
+                                    <td class="sorting_1"><?php echo $i++; ?></td>
+                                    <td><?php echo $name; ?></td>
+                                    <td><?php echo $class_name; ?></td>
+                                    <td class="center"><?php echo $address_provience; ?></td>
+                                    <td class="center"><?php echo $created_at; ?></td>
                                     <td>
                                         <a href="admission.php?source=profile" data-toggle="tooltip" data-placement="top" title="View User">
                                             <i class="fa fa-eye text-success"></i>
@@ -46,6 +68,12 @@
                                     </a>
                                     </td>
                                 </tr>
+                                <?php       }
+                                        }else{
+                                            echo " O results";
+                                        }
+                                        mysqli_close($connection);
+                                ?>
                             </tbody>
                         </table>
                     </div>

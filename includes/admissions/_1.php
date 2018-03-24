@@ -36,6 +36,37 @@
         <h5>ชื่อเล่น</h5>
             <input name="newstu_petname" value="" placeholder="" type="text" class="form-control "/>
     </div>
+
+
+    <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="h2">ตำบล / แขวง</label>
+                                    <input name="district" class="form-control" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="h2">อำเภอ / เขต</label>
+                                    <input name="amphoe" class="form-control" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="h2">จังหวัด</label>
+                                    <input name="province" class="form-control" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="h2">รหัสไปรษณีย์</label>
+                                    <input name="zipcode" class="form-control" type="text">
+                                </div>
+                            </div>
+
+                            
 </div>
 
 <div class="row">
