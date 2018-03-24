@@ -7,12 +7,6 @@ if ($source == "add" || $source == "edit") {
     <!--Plugin styles-->
         <link type="text/css" rel="stylesheet" href="assets/vendors/inputlimiter/css/jquery.inputlimiter.css"/>
         <link type="text/css" rel="stylesheet" href="assets/vendors/chosen/css/chosen.css"/>
-        <link type="text/css" rel="stylesheet" href="assets/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css"/>
-        <link type="text/css" rel="stylesheet" href="assets/vendors/jquery-tagsinput/css/jquery.tagsinput.css"/>
-        <link type="text/css" rel="stylesheet" href="assets/vendors/daterangepicker/css/daterangepicker.css"/>
-        <link type="text/css" rel="stylesheet" href="assets/vendors/datepicker/css/bootstrap-datepicker.min.css"/>
-        <link type="text/css" rel="stylesheet" href="assets/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
-        <link type="text/css" rel="stylesheet" href="assets/vendors/bootstrap-switch/css/bootstrap-switch.min.css"/>
         <link type="text/css" rel="stylesheet" href="assets/vendors/jasny-bootstrap/css/jasny-bootstrap.min.css"/>
         <link type="text/css" rel="stylesheet" href="assets/vendors/fileinput/css/fileinput.min.css"/>
 
@@ -22,40 +16,17 @@ if ($source == "add" || $source == "edit") {
     <!--Page level styles-->
         <link type="text/css" rel="stylesheet" href="assets/css/pages/form_elements.css"/>
         <link type="text/css" rel="stylesheet" href="assets/css/pages/wizards.css"/> 
-    <!-- end page level scripts -->
+    <!-- end page level scripts -->   
 EOD;
     $global_scripts_js = <<<EOD
-
-    <script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-33058582-1', 'auto', {
-        'name': 'Main'
-    });
-    ga('Main.send', 'event', 'jquery.Thailand.js', 'GitHub', 'Visit');
-</script>
-
 
     <!-- plugin level scripts -->
         <script type="text/javascript" src="assets/vendors/jquery.uniform/js/jquery.uniform.js"></script>
         <script type="text/javascript" src="assets/vendors/inputlimiter/js/jquery.inputlimiter.js"></script>
         <script type="text/javascript" src="assets/vendors/chosen/js/chosen.jquery.js"></script>
-        <script type="text/javascript" src="assets/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
         <script type="text/javascript" src="assets/vendors/jquery-tagsinput/js/jquery.tagsinput.js"></script>
         <script type="text/javascript" src="assets/vendors/validval/js/jquery.validVal.min.js"></script>
         <script type="text/javascript" src="assets/vendors/moment/js/moment.min.js"></script>
-        <script type="text/javascript" src="assets/vendors/daterangepicker/js/daterangepicker.js"></script>
-        <script type="text/javascript" src="assets/vendors/datepicker/js/bootstrap-datepicker.min.js"></script>
-        <script type="text/javascript" src="assets/vendors/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
         <script type="text/javascript" src="assets/vendors/bootstrap-switch/js/bootstrap-switch.min.js"></script>
         <script type="text/javascript" src="assets/vendors/autosize/js/jquery.autosize.min.js"></script>
         <script type="text/javascript" src="assets/vendors/inputmask/js/inputmask.js"></script>
@@ -75,50 +46,6 @@ EOD;
     <!--Page level scripts-->
         <script type="text/javascript" src="assets/js/pages/wizard.js"></script>
     <!-- end page level scripts -->
-
-
-    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script
-
-    <script type="text/javascript" src="assets/jquery.Thailand.js/dependencies/JQL.min.js"></script>
-    <script type="text/javascript" src="assets/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
-    
-    <script type="text/javascript" src="assets/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
-    
-    <script type="text/javascript">
-        $.Thailand({
-            database: 'assets/jquery.Thailand.js/database/db.json', 
-
-            $district: $('#demo1 [name="district"]'),
-            $amphoe: $('#demo1 [name="amphoe"]'),
-            $province: $('#demo1 [name="province"]'),
-            $zipcode: $('#demo1 [name="zipcode"]'),
-
-            onDataFill: function(data){
-                console.info('Data Filled', data);
-            },
-
-            onLoad: function(){
-                console.info('Autocomplete is ready!');
-                $('#loader, .demo').toggle();
-            }
-        });
-
-        // watch on change
-        $('#demo1 [name="district"]').change(function(){
-            console.log('ตำบล', this.value);
-        });
-        $('#demo1 [name="amphoe"]').change(function(){
-            console.log('อำเภอ', this.value);
-        });
-        $('#demo1 [name="province"]').change(function(){
-            console.log('จังหวัด', this.value);
-        });
-        $('#demo1 [name="zipcode"]').change(function(){
-            console.log('รหัสไปรษณีย์', this.value);
-        });
-    </script>
-
 EOD;
 } else if ($source == "profile"){
     $global_scripts_css = <<<EOD

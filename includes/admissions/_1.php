@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-1 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>เรียนต่อ</h5>
         <select class="form-control" name="admit_class" tabindex="7">
             <?php 
@@ -16,7 +16,7 @@
         </select>
     </div>
     <br>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ชื่อหนำหน้า</h5>
             <input name="newstu_titlename" value="" placeholder="" type="text" class="form-control "/>
     </div>
@@ -24,61 +24,30 @@
         <h5>ชื่อ</h5>
             <input name="newstu_name" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>นามสกุล</h5>
             <input name="newstu_lastname" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ฉายา</h5>
             <input name="newstu_chaya" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ชื่อเล่น</h5>
             <input name="newstu_petname" value="" placeholder="" type="text" class="form-control "/>
     </div>
-
-
-    <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="h2">ตำบล / แขวง</label>
-                                    <input name="district" class="form-control" type="text">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="h2">อำเภอ / เขต</label>
-                                    <input name="amphoe" class="form-control" type="text">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="h2">จังหวัด</label>
-                                    <input name="province" class="form-control" type="text">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="h2">รหัสไปรษณีย์</label>
-                                    <input name="zipcode" class="form-control" type="text">
-                                </div>
-                            </div>
-
-                            
-</div>
-
-<div class="row">
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>เลขประจำตัวประชาชน</h5>
             <input name="newstu_nationalid" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ว/ด/ป/เกิด</h5>
             <input name="newstu_dob" value="" placeholder="" type="date" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+</div>
+
+<div class="row">
+    <div class="col-lg-3 input_field_sections">
         <h5>หมู่โลหิต</h5>
         <select class="form-control" name="newstu_bgroup">
             <option value="-"></option>
@@ -88,50 +57,50 @@
             <option value="O">O</option> 
         </select>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ปัจจุบันน้ำหนัก กิโลกรัม</h5>
             <input name="newstu_weight" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ส่วนสูง เซนติเมตร</h5>
             <input name="newstu_height" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>เลขรหัสประจำบ้าน </h5>
             <input name="newstu_houseno" value="" placeholder="" type="text" class="form-control "/>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-lg-1 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>เลขที่</h5>
             <input name="address_no" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-1 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>หมู่</h5>
             <input name="address_moo" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-1 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>บ้าน</h5>
             <input name="address_house" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ตำบล</h5>
-            <input name="address_tambol" value="" placeholder="" type="text" class="form-control "/>
+            <input name="address_tambol" value="" id="address_tambol" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>อำเภอ</h5>
-            <input name="address_district" value="" placeholder="" type="text" class="form-control "/>
+            <input name="address_district" value="" id="address_district" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>จังหวัด</h5>
-            <input name="address_provience" value="" placeholder="" type="text" class="form-control "/>
+            <input name="address_provience" value="" id="address_provience" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-1 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ไปรษณีย์</h5>
-            <input name="address_zip" value="" placeholder="" type="text" class="form-control "/>
+            <input name="address_zip" value="" id="address_zip" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-2 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>โทรศัพท์นักเรียน</h5>
             <input name="address_tel" value="" placeholder="" type="text" class="form-control "/>
     </div>
@@ -201,33 +170,6 @@
                     <input name="parent_m_tel" value="" placeholder="" type="text" class="form-control "/>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-2 input_field_sections">
-                <h5>จำนวนพี่น้องทั้งหมด</h5>
-                    <input name="sibling_total" value="" placeholder="" type="text" class="form-control "/>
-            </div>
-            <div class="col-lg-2 input_field_sections">
-                <h5>พี่ชาย</h5>
-                    <input name="sibling_o_bro" value="" placeholder="" type="text" class="form-control "/>
-            </div>
-            <div class="col-lg-2 input_field_sections">
-                <h5>น้องชาย</h5>
-                    <input name="sibling_l_bro" value="" placeholder="" type="text" class="form-control "/>
-            </div>
-            <div class="col-lg-2 input_field_sections">
-                <h5>พี่สาว</h5>
-                    <input name="sibling_o_sis" value="" placeholder="" type="text" class="form-control "/>
-            </div>
-            <div class="col-lg-2 input_field_sections">
-                <h5>น้องสาว</h5>
-                    <input name="sibling_l_sis" value="" placeholder="" type="text" class="form-control "/>
-            </div>
-            <div class="col-lg-2 input_field_sections">
-                <h5>นักเรียนเป็นบุตรคนที่</h5>
-                    <input name="newstut_status" value="" placeholder="" type="text" class="form-control "/>
-            </div>
-        </div>
     </div>
 
     <div class="col-lg-2">
@@ -256,12 +198,39 @@
     </div>
 </div>
 
+        <div class="row">
+            <div class="col-lg-2 input_field_sections">
+                <h5>จำนวนพี่น้องทั้งหมด</h5>
+                    <input name="sibling_total" value="" placeholder="" type="text" class="form-control "/>
+            </div>
+            <div class="col-lg-2 input_field_sections">
+                <h5>พี่ชาย</h5>
+                    <input name="sibling_o_bro" value="" placeholder="" type="text" class="form-control "/>
+            </div>
+            <div class="col-lg-2 input_field_sections">
+                <h5>น้องชาย</h5>
+                    <input name="sibling_l_bro" value="" placeholder="" type="text" class="form-control "/>
+            </div>
+            <div class="col-lg-2 input_field_sections">
+                <h5>พี่สาว</h5>
+                    <input name="sibling_o_sis" value="" placeholder="" type="text" class="form-control "/>
+            </div>
+            <div class="col-lg-2 input_field_sections">
+                <h5>น้องสาว</h5>
+                    <input name="sibling_l_sis" value="" placeholder="" type="text" class="form-control "/>
+            </div>
+            <div class="col-lg-2 input_field_sections">
+                <h5>นักเรียนเป็นบุตรคนที่</h5>
+                    <input name="newstut_status" value="" placeholder="" type="text" class="form-control "/>
+            </div>
+        </div>
+
 <div class="row">
-    <div class="col-lg-3 input_field_sections">
+    <div class="col-lg-2 input_field_sections">
         <h5>ชื่อ-สกุลผู้ปกครอง</h5>
             <input name="guardian_name" value="" placeholder="" type="text" class="form-control rounded_input"/>
     </div>
-    <div class="col-lg-3 input_field_sections">
+    <div class="col-lg-2 input_field_sections">
         <h5>อาชีพ</h5>
         <select class="form-control" name="guardian_occupation" tabindex="7">
             <?php 
@@ -277,19 +246,19 @@
             ?>
         </select>
     </div>
-    <div class="col-lg-3 input_field_sections">
+    <div class="col-lg-2 input_field_sections">
         <h5>รายได้ต่อเดือน</h5>
             <input name="guardian_income" value="" placeholder="" type="text" class="form-control rounded_input"/>
     </div>
-    <div class="col-lg-3 input_field_sections">
+    <div class="col-lg-2 input_field_sections">
         <h5>โทร</h5>
             <input name="guardian_tel" value="" placeholder="" type="text" class="form-control rounded_input"/>
     </div>
-    <div class="col-lg-3 input_field_sections">
+    <div class="col-lg-2 input_field_sections">
         <h5>เลขประจำตัวประชาชน</h5>
             <input name="guardian_national_id" value="" placeholder="" type="text" class="form-control rounded_input"/>
     </div>
-    <div class="col-lg-3 input_field_sections">
+    <div class="col-lg-2 input_field_sections">
         <h5>เกี่ยวข้องกับนักเรียน เป็น  </h5>
             <input name="guardian_relation" value="" placeholder="" type="text" class="form-control rounded_input"/>
     </div>
@@ -297,33 +266,33 @@
 
 
 <div class="row">
-    <div class="col-lg-4 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>ชื่อวัด</h5>
             <input name="wat_name" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-4 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>นามเจ้าอาวาส</h5>
             <input name="wat_abbot" value="" placeholder="" type="text" class="form-control "/>
     </div>
-    <div class="col-lg-4 input_field_sections">
+    <div class="col-lg-3 input_field_sections">
         <h5>โทรศัพท์</h5>
             <input name="wat_tel" value="" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5>ตำบล</h5>
-            <input name="wat_tambol" value="" placeholder="" type="text" class="form-control "/>
+            <input name="wat_tambol" value="" id="wat_tambol" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5>อำเภอ</h5>
-            <input name="wat_district" value="" placeholder="" type="text" class="form-control "/>
+            <input name="wat_district" value="" id="wat_district" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5>จังหวัด</h5>
-            <input name="wat_provience" value="" placeholder="" type="text" class="form-control "/>
+            <input name="wat_provience" value="" id="wat_provience" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5>รหัสไปรษณีย์</h5>
-            <input name="wat_postal" value="" placeholder="" type="text" class="form-control "/>
+            <input name="wat_postal" value="" id="wat_postal" placeholder="" type="text" class="form-control "/>
     </div>
 
 </div>

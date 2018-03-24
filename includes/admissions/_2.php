@@ -21,15 +21,15 @@
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>ตำบล</h5>
-            <input name="school_tambol" value="" placeholder="" type="text" class="form-control "/>
+            <input name="school_tambol" id="school_tambol" value="" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>อำเภอ</h5>
-            <input name="school_district" value="" placeholder="" type="text" class="form-control "/>
+            <input name="school_district" id="school_district" value="" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>จังหวัด</h5>
-            <input name="school_provience" value="" placeholder="" type="text" class="form-control "/>
+            <input name="school_provience" id="school_provience" value="" placeholder="" type="text" class="form-control "/>
     </div>
 </div>
 
@@ -60,15 +60,15 @@
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>ตำบล</h5>
-            <input name="naktham_tambol" value="" placeholder="" type="text" class="form-control "/>
+            <input name="naktham_tambol" id="naktham_tambol" value="" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>อำเภอ</h5>
-            <input name="naktham_district" value="" placeholder="" type="text" class="form-control "/>
+            <input name="naktham_district" id="naktham_district" value="" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>จังหวัด</h5>
-            <input name="naktham_provience" value="" placeholder="" type="text" class="form-control "/>
+            <input name="naktham_provience" id="naktham_provience" value="" placeholder="" type="text" class="form-control "/>
     </div>
 </div>
 
@@ -99,15 +99,15 @@
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>ตำบล</h5>
-            <input name="pali_tambol" value="" placeholder="" type="text" class="form-control "/>
+            <input name="pali_tambol" id="pali_tambol" value="" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>อำเภอ</h5>
-            <input name="pali_district" value="" placeholder="" type="text" class="form-control "/>
+            <input name="pali_district" id="pali_district" value="" placeholder="" type="text" class="form-control "/>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>จังหวัด</h5>
-            <input name="pali_provience" value="" placeholder="" type="text" class="form-control "/>
+            <input name="pali_provience" id="pali_provience" value="" placeholder="" type="text" class="form-control "/>
     </div>
 </div>
 
