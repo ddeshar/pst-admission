@@ -40,7 +40,7 @@
                 } else if ($source == "edit") {
                     include "includes/admissions/edit.php";
                 } else if ($source == "profile"){
-                    include "includes/admissions/thai.php";
+                    include "includes/admissions/profile.php";
                 } else {
                     include "includes/admissions/view.php";
                 }

@@ -17,173 +17,157 @@
                     <ul class="nav nav-inline view_user_nav_padding">
                         <li class="nav-item card_nav_hover">
                             <a class="nav-link active" href="#user" id="home-tab"
-                                data-toggle="tab" aria-expanded="true">User Details</a>
+                                data-toggle="tab" aria-expanded="true">ประวัติพื้นฐาน</a>
                         </li>
                         <li class="nav-item card_nav_hover">
-                            <a class="nav-link" href="#tab2" id="hats-tab" data-toggle="tab">About Me</a>
+                            <a class="nav-link" href="#tab2" id="hats-tab" data-toggle="tab">ประวัติทางการศึกษา</a>
                         </li>
                         <li class="nav-item card_nav_hover">
-                            <a class="nav-link" href="#tab3"  id="followers" data-toggle="tab">Followers</a>
+                            <a class="nav-link" href="#tab3"  id="followers" data-toggle="tab">หลักฐานในการสมัครเรียน</a>
                         </li>
                     </ul>
                     <div id="clothing-nav-content" class="tab-content m-t-10">
                         <div role="tabpanel" class="tab-pane fade show active" id="user">
                             <table class="table" id="users">
+
+                                <?php $test = "ยังไม่ได้รับ"; ?>
                                 <tr>
-                                    <td>User Name</td>
-                                    <td class="inline_edit">
-                                    <span class="editable"
-                                            data-title="Edit User Name">Micheal</span>
-                                    </td>
+                                    <td>ชื่อ</td>
+                                    <td><?php echo $test;?></td>
                                 </tr>
                                 <tr>
-                                    <td>E-mail</td>
-                                    <td>
-                                        <span class="editable" data-title="Edit E-mail">gankunding@hotmail.com</span>
-                                    </td>
+                                    <td>ชื่อเล่น</td>
+                                    <td><?php echo $test;?></td>
                                 </tr>
                                 <tr>
-                                    <td>Phone Number</td>
-                                    <td>
-                                        <span class="editable" data-title="Edit Phone Number">(999)999-9999</span>
-                                    </td>
+                                    <td>เกิดวันที่</td>
+                                    <td><?php echo $test;?></td>
                                 </tr>
                                 <tr>
-                                    <td>Address</td>
-                                    <td>
-                                        <span class="editable" data-title="Edit Address">Australia</span>
-                                    </td>
+                                    <td>หมู่โลหิต </td>
+                                    <td><?php echo $test;?></td>
                                 </tr>
                                 <tr>
-                                    <td>Created At</td>
-                                    <td>1 month ago</td>
+                                    <td>ปัจจุบัน น้ำหนัก</td>
+                                    <td><?php echo $test;?>กิโลกรัม</td>
                                 </tr>
                                 <tr>
-                                    <td>City</td>
-                                    <td>
-                                        <span class="editable" data-title="Edit City">Nakia</span>
-                                    </td>
+                                    <td>ส่วนสูง</td>
+                                    <td><?php echo $test;?>เซนติเมตร</td>
                                 </tr>
                                 <tr>
-                                    <td>Pincode</td>
-                                    <td>
-                                        <span class="editable" data-title="Edit Pincode">522522</span>
-                                    </td>
+                                    <td>เลขประจำตัวประชาชน</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>เลขรหัสประจำบ้าน </td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>ที่อยู่ตามทะเบียนบ้าน </td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สถานภาพบิดา-มารดา</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>บิดาผู้ให้กำเนิด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>มารดาผู้ให้กำเนิด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>จำนวนพี่น้องทั้งหมด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>ผู้ปกครอง</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>ปัจจุบันสังกัดวัด</td>
+                                    <td><?php echo $test;?></td>
                                 </tr>
                             </table>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab2">
-                            <div class="card_nav_body_padding">
-                                <p>
-                                    Howdy, I'm in About Me.
-                                </p>
-                                <p class="text-justify">
-                                    Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                    consequat. Duis autem vel eum iriure dolor in hendrerit in
-                                    vulputate velit esse molestie consequat. Ut wisi enim ad
-                                    minim veniam, quis nostrud exerci tation.
-                                </p>
-                            </div>
+                            <table class="table" id="users">
+                                <tr>
+                                    <td>การศึกษาชั้นสุดท้าย </td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>นักธรรม</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>ประโยค</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>วิชาที่ถนัดเรียน </td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>วิชาที่ไม่ถนัด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                            </table>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab3">
-                            <div class="card_nav_body_padding follower_images">
-                                <div class="row">
-                                    <div class="col-sm-3 col-xl-2">
-                                        <div class="img">
-                                            <a href="#">
-                                                <img src="assets/img/mailbox_imgs/2.jpg" class="rounded-circle" alt="friend">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-9 col-xl-9">
-                                        <div class="details">
-                                            <div class="name">
-                                                <a href="#">Scarlett Johansson</a>
-                                            </div>
-                                            <div class="time">
-                                                <i class="fa fa-clock-o"></i> Last seen: 7 minutes ago
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row m-t-15">
-                                    <div class="col-sm-3 col-xl-2">
-                                        <div class="img">
-                                            <a href="#">
-                                                <img src="assets/img/mailbox_imgs/3.jpg" class="rounded-circle" alt="friend">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-9 col-xl-10">
-                                        <div class="details">
-                                            <div class="name">
-                                                <a href="#">Mila Kunis</a>
-                                            </div>
-                                            <div class="time">
-                                                <i class="fa fa-clock-o"></i> Online
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row m-t-15">
-                                    <div class="col-xl-2 col-sm-3">
-                                        <div class="img">
-                                            <a href="#">
-                                                <img src="assets/img/mailbox_imgs/8.jpg" class="rounded-circle" alt="friend">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-10 col-sm-9">
-                                        <div class="details">
-                                            <div class="name">
-                                                <a href="#">George Clooney</a>
-                                            </div>
-                                            <div class="time">
-                                                <i class="fa fa-clock-o"></i> Last seen: 1 hour ago
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row m-t-15">
-                                    <div class="col-xl-2 col-sm-3">
-                                        <div class="img">
-                                            <a href="#">
-                                                <img src="assets/img/mailbox_imgs/6.jpg" class="rounded-circle" alt="friend">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-10 col-sm-9">
-                                        <div class="details">
-                                            <div class="name">
-                                                <a href="#">Robert Downey Jr.</a>
-                                            </div>
-                                            <div class="time">
-                                                <i class="fa fa-clock-o"></i> Online
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row m-t-15">
-                                    <div class="col-xl-2 col-sm-3">
-                                        <div class="img">
-                                            <a href="#">
-                                                <img src="assets/img/mailbox_imgs/5.jpg" class="rounded-circle" alt="friend">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-10 col-sm-9">
-                                        <div class="details">
-                                            <div class="name">
-                                                <a href="#">Ryan Gossling</a>
-                                            </div>
-                                            <div class="time">
-                                                <i class="fa fa-clock-o"></i> Last seen: 45 minutes ago
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <table class="table" id="users">
+                                <tr>
+                                    <td>วุฒิการศึกษา (ปพ.1)</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>ใบประกาศนียบัตรจบการศึกษา (ปพ.2)</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>ใบรับรองผลการศึกษา (ปพ.7)</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สำเนาทะเบียนบ้านบิดาผู้ให้กำเนิด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สำเนาหนังสือสุทธิแสดงสังกัดวัด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>หนังสือรับรองจากวัดต้นสังกัด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สำเนาทะเบียนบ้านนักเรียน</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สำเนาทะเบียนบ้านมารดาผู้ให้กำเนิด</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สำเนาใบเปลี่ยนชื่อ-นามสกุล</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สำเนาใบประกาศนียบัตร นักธรรมชั้น</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>สำเนาใบประกาศนียบัตร บาลีประโยค</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                                <tr>
+                                    <td>หลักฐานอื่น ๆ (ระบุ)</td>
+                                    <td><?php echo $test;?></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
