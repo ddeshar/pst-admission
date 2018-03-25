@@ -17,7 +17,7 @@ EOD;
                     <div class="col-6">
                         <h4 class="m-t-5">
                             <i class="fa fa-home"></i>
-                            Dashboard
+                            แผงควบคุม
                         </h4>
                     </div>
                     </div>
@@ -43,10 +43,10 @@ EOD;
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
-                                                        <span class="number_val" id="sales_count"></span><i
-                                                            class="fa fa-long-arrow-up fa-2x"></i>
+                                                        <span class="number_val" id="sales_count"></span>
+                                                        <i class="fa fa-long-arrow-up fa-2x"></i> 100 รูป
                                                         <br/>
-                                                        <span class="card_description">Sales</span>
+                                                        <span class="card_description">จำนวนนักเรียน</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,9 +66,9 @@ EOD;
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
                                                         <span class="number_val" id="visitors_count"></span><i
-                                                            class="fa fa-long-arrow-up fa-2x"></i>
+                                                            class="fa fa-long-arrow-up fa-2x"></i> 100 รูป
                                                         <br/>
-                                                        <span class="card_description">Visitors</span>
+                                                        <span class="card_description">ม.ต้น</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -88,9 +88,9 @@ EOD;
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
                                                         <span class="number_val" id="revenue_count"></span><i
-                                                            class="fa fa-long-arrow-up fa-2x"></i>
+                                                            class="fa fa-long-arrow-up fa-2x"></i> 100 รูป
                                                         <br/>
-                                                        <span class="card_description">Revenue</span>
+                                                        <span class="card_description">ม.ปลาย</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,9 +110,9 @@ EOD;
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
                                                         <span class="number_val" id="subscribers_count"></span><i
-                                                            class="fa fa-long-arrow-down fa-2x"></i>
+                                                            class="fa fa-long-arrow-down fa-2x"></i> 100 รูป
                                                         <br/>
-                                                        <span class="card_description">Subscribers</span>
+                                                        <span class="card_description">แนะนำจากรุ่นพี</span>
                                                     </div>
                                                 </div>
                                             </div>

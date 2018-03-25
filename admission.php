@@ -11,11 +11,11 @@
                         <div class="col-lg-6">
                             <h4 class="nav_top_align">
                                 <i class="fa fa-file-o"></i>
-                                Blank Page
+                                ข้อมูลรับสมัครนักเรียน
                             </h4>
                         </div>
                         <div class="col-lg-6">
-                            <div class="float-right">
+                            <!-- <div class="float-right">
                                 <ol class="breadcrumb nav_breadcrumb_top_align">
                                     <li class="breadcrumb-item">
                                         <a href="index.html">
@@ -28,7 +28,7 @@
                                     </li>
                                     <li class="breadcrumb-item active">Blank Page</li>
                                 </ol>
-                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -65,21 +65,29 @@
 
         $select = "SELECT * FROM school WHERE school_name = '$school_name'";
         $query= mysqli_query($connection, $select);
-        $obj = mysqli_fetch_array($query);
-       
+
         $rowcount=mysqli_num_rows($query);
+
         if($rowcount > 0){
-             $last_school = $obj["school_id"];
+            echo "Hello";
         }else{
-            $school="INSERT INTO school (school_name, school_tambol, school_district, school_provience ) 
-            VALUES ('$school_name', '$school_tambol', '$school_district', '$school_provience')";
-                
-            if (mysqli_query($connection, $school)) {
-                $last_school = mysqli_insert_id($connection);
-            } else {
-                echo "Error: " . $school . "<br>" . mysqli_error($connection);
-            }
+            echo "Bye";
         }
+
+
+
+
+
+
+        $school="INSERT INTO school (school_name, school_tambol, school_district, school_provience ) 
+        VALUES ('$school_name', '$school_tambol', '$school_district', '$school_provience')";
+
+        if (mysqli_query($connection, $school)) {
+            $last_school = mysqli_insert_id($connection);
+            // echo $school . "<br>";            
+        } else {
+            echo "Error: " . $school . "<br>" . mysqli_error($connection);
+        }      
 
         $education_grade            = mysqli_real_escape_string($connection, $_POST['education_grade']);
         $education_school_id        = $last_school;
@@ -92,7 +100,7 @@
             // echo $education . "<br>";            
         } else {
             echo "Error: " . $education . "<br>" . mysqli_error($connection);
-        }
+        }    
 
         $naktham_school             = mysqli_real_escape_string($connection, $_POST['naktham_school']);
         $naktham_tambol             = mysqli_real_escape_string($connection, $_POST['naktham_tambol']);
@@ -101,9 +109,6 @@
         $naktham_year               = mysqli_real_escape_string($connection, $_POST['naktham_year']);
         $naktham_ref_id             = mysqli_real_escape_string($connection, $_POST['naktham_ref_id']);
         $naktham_level              = mysqli_real_escape_string($connection, $_POST['naktham_level']);
-
-
-        
 
         $naktham="INSERT INTO naktham (naktham_school,naktham_tambol, naktham_district, naktham_provience,  naktham_year, naktham_ref_id, naktham_level) 
         VALUES ('$naktham_school', '$naktham_tambol', '$naktham_district', '$naktham_provience', '$naktham_year','$naktham_ref_id', '$naktham_level')";
