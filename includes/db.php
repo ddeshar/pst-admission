@@ -14,3 +14,5 @@
     $query = "SET NAMES utf8";
     
     mysqli_query($connection,$query);
+    mysqli_set_charset($connection, 'utf8');
+    date_default_timezone_set("Asia/Bangkok");

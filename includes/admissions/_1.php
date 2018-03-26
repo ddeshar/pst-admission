@@ -42,7 +42,7 @@
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5><code>ว/ด/ป/เกิด *</code></h5>
-            <input name="newstu_dob" value="" placeholder="2037/12/30" type="text" class="form-control " required/>
+            <input name="newstu_dob" value="" placeholder="2037-12-21" type="text" class="form-control " required/>
     </div>
 </div>
 
@@ -201,7 +201,7 @@
             <div class="col-lg-2 input_field_sections">
                 <h5>จำนวนพี่น้องทั้งหมด</h5>
                     <select class="form-control" name="sibling_total" tabindex="7">
-                        <option value=''> - </option>
+                        <option value='-'> - </option>
                         <?php 
                             for($i =0; $i <= 9 ;$i++){
                                 $sibling_total = $i + 1;
@@ -213,7 +213,7 @@
             <div class="col-lg-2 input_field_sections">
                 <h5>พี่ชาย</h5>
                     <select class="form-control" name="sibling_o_bro" tabindex="7" >
-                        <option value=''> - </option>
+                        <option value='-'> - </option>
                         <?php 
                             for($i =0; $i <= 9 ;$i++){
                                 $sibling_o_bro = $i + 1;
@@ -225,7 +225,7 @@
             <div class="col-lg-2 input_field_sections">
                 <h5>น้องชาย</h5>
                     <select class="form-control" name="sibling_l_bro" tabindex="7" >
-                        <option value=''> - </option>
+                        <option value='-'> - </option>
                         <?php 
                             for($i =0; $i <= 9 ;$i++){
                                 $sibling_l_bro = $i + 1;
@@ -237,7 +237,7 @@
             <div class="col-lg-2 input_field_sections">
                 <h5>พี่สาว</h5>
                     <select class="form-control" name="sibling_o_sis" tabindex="7" >
-                        <option value=''> - </option>
+                        <option value='-'> - </option>
                         <?php 
                             for($i =0; $i <= 9 ;$i++){
                                 $sibling_o_sis = $i + 1;
@@ -249,7 +249,7 @@
             <div class="col-lg-2 input_field_sections">
                 <h5>น้องสาว</h5>
                     <select class="form-control" name="sibling_l_sis" tabindex="7" >
-                        <option value=''> - </option>
+                        <option value='-'> - </option>
                         <?php 
                             for($i =0; $i <= 9 ;$i++){
                                 $sibling_l_sis = $i + 1;
@@ -261,7 +261,7 @@
             <div class="col-lg-2 input_field_sections">
                 <h5><code>นักเรียนเป็นบุตรคนที่ *</code></h5>
                     <select class="form-control" name="newstut_status" tabindex="7" required>
-                        <option value=''> - </option>
+                        <!-- <option value=''> - </option> -->
                         <?php 
                             for($i =0; $i <= 9 ;$i++){
                                 $newstut_status = $i + 1;

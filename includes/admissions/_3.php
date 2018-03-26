@@ -120,7 +120,7 @@
     <div class="col-lg-6 input_field_sections">
         <h5>นักเรียนได้รับข่าวสารจากใหน </h5>
         <select class="form-control" name="newstu_get_notice_from" tabindex="7" required>
-            <option value="">-</option>        
+            <option value="NULL">-</option>        
             <?php 
                 $notice_query = "SELECT * FROM notice";
                 $query_notice = mysqli_query($connection, $notice_query);

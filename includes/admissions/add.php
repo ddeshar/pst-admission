@@ -73,7 +73,7 @@
         }else{
             $school="INSERT INTO school (school_name, school_tambol, school_district, school_provience ) 
             VALUES ('$school_name', '$school_tambol', '$school_district', '$school_provience')";
-            echo $school . "<br>";            
+            // echo $school . "<br>";            
                 
             if (mysqli_query($connection, $school)) {
                 $last_school = mysqli_insert_id($connection);
@@ -252,6 +252,33 @@
 
         if (mysqli_query($connection, $newstudent)) {
             $last_newstudent = mysqli_insert_id($connection);
+            
+            include_once "includes/_count.php";
+            include_once "includes/function.php";
+            
+            $newstudet ="SELECT CONCAT(N.newstu_titlename,'', N.newstu_name , ' ' ,N.newstu_lastname ) AS name, C.class_name AS class
+                        FROM newstudent AS N INNER JOIN class AS C ON N.newstu_admit_class = C.class_id
+                        WHERE newstu_id = '$last_newstudent'";
+                        
+                        $newstudet_result = mysqli_query($connection,$newstudet);
+                        while ($stu_line = mysqli_fetch_array($newstudet_result)){
+                            $name = $stu_line["name"];
+                            $class = $stu_line["class"];
+                        }
+
+                $mesg = "ระบบรับสมัครนักเรียนออนไลน์";
+                $creator = "Project by dipendra Deshar";
+
+                $date = date("d-m-Y H:i:s");
+
+                // Code for sending message on line
+                $message = $mesg."\n".'ชื่อ: '.$name."\n".'ชั้น: '.$class."\n".'สรุปสถิติในการรับสมัครนักเรียน: '."\n".'ม.ต้น จำนวน '.$ton.' รูป'."\n".'ม.ปลาย จำนวน '.$plai.' รูป '."\n".'สรุปจำนวน '.$total.' รูป'."\n".'เวลา: '.DateThai($date)."\n".$creator;
+                sendlinemesg();
+                // header('Content-Type: text/html; charset=utf-8');
+                $res = notify_message($message);
+
+
+            header('Location: admission.php?source=profile&newstu='.$last_newstudent);
             // echo $newstudent . "<br>";
         } else {
             echo "Error: " . $newstudent . "<br>" . mysqli_error($connection);

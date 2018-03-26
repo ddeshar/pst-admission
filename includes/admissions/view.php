@@ -57,7 +57,7 @@
                                     <td class="center"><?php echo $address_provience; ?></td>
                                     <td class="center"><?php echo $created_at; ?></td>
                                     <td>
-                                        <a href="admission.php?source=profile" data-toggle="tooltip" data-placement="top" title="View User">
+                                        <a href="admission.php?source=profile&newstu=<?=$newstu_id?>" data-toggle="tooltip" data-placement="top" title="View User">
                                             <i class="fa fa-eye text-success"></i>
                                         </a>&nbsp; &nbsp;
                                         <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="admission.php?source=edit">
