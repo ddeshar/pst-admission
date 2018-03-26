@@ -91,7 +91,7 @@
     <div class="col-lg-4">
         <div class="row">
             <div class="col-sm-12 m-t-35">
-                <h5>Image Upload</h5>
+                <h5><code>รูป ***</code></h5>
                 <input id="input-21" name="image" type="file" accept="image/*" class="file-loading">
             </div>
         </div>
@@ -102,6 +102,7 @@
     <div class="col-lg-6 input_field_sections">
         <h5>บุคคลที่ผ่ามาสมัคร </h5>
         <select class="form-control" name="newstu_user_id" tabindex="7">
+            <option value="">-</option>        
             <?php 
                 $users_query = "SELECT * FROM users";
                 $query_users = mysqli_query($connection, $users_query);
@@ -118,14 +119,15 @@
 
     <div class="col-lg-6 input_field_sections">
         <h5>นักเรียนได้รับข่าวสารจากใหน </h5>
-        <select class="form-control" name="newstu_get_notice_from" tabindex="7">
+        <select class="form-control" name="newstu_get_notice_from" tabindex="7" required>
+            <option value="">-</option>        
             <?php 
-                $users_query = "SELECT * FROM users";
-                $query_users = mysqli_query($connection, $users_query);
-                if(mysqli_num_rows($query_users) > 0){
-                    while($users = mysqli_fetch_assoc($query_users)){
+                $notice_query = "SELECT * FROM notice";
+                $query_notice = mysqli_query($connection, $notice_query);
+                if(mysqli_num_rows($query_notice) > 0){
+                    while($notice = mysqli_fetch_assoc($query_notice)){
             ?>
-            <option value="<?php echo $users["user_id"] ?>"><?php echo $users["firstname"] ?></option>
+            <option value="<?php echo $notice["notice_id"] ?>"><?php echo $notice["notice_name"] ?></option>
             <?php
                     }
                 }

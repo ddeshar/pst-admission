@@ -47,7 +47,7 @@
                                     <a class="dropdown-item" href="#"><i class="fa fa-user"></i> User Status</a>
                                     <a class="dropdown-item" href="mail_inbox.html"><i class="fa fa-envelope"></i>Inbox</a>
                                     <a class="dropdown-item" href="lockscreen.html"><i class="fa fa-lock"></i>Lock Screen</a> -->
-                                    <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out"></i>Log Out</a>
+                                    <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out"></i>Log Out</a>
                                 </div>
                             </div>
                         </div>

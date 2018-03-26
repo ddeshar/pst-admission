@@ -1,5 +1,11 @@
 <?php 
     include_once 'includes/db.php';
+    
+    include 'includes/session.php';
+    if(isset($_SESSION['user_id'])) {
+    } else {
+      header("location: index.php");
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

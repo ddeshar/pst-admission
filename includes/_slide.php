@@ -6,7 +6,7 @@
                 <div class="user-wrapper bg-dark">
                     <a class="user-link" href="">
                         <img class="media-object img-thumbnail user-img rounded-circle admin_img3" alt="User Picture" src="assets/img/admin.jpg">
-                        <p class="text-white user-info">Welcome Dipendra</p></a>
+                        <p class="text-white user-info">Welcome <?=$s_login_firstname?></p></a>
 
                     <!-- <div class="search_bar col-lg-12">
                         <div class="input-group">

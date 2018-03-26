@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-1 input_field_sections">
-        <h5>จบชั้น </h5>
-        <select class="form-control" name="education_grade" tabindex="7">
+        <h5><code>จบชั้น *</code> </h5>
+        <select class="form-control" name="education_grade" tabindex="7" required>
             <?php 
                 $class_query = "SELECT * FROM class";
                 $query_class = mysqli_query($connection, $class_query);
@@ -16,27 +16,27 @@
         </select>
     </div>
     <div class="col-lg-5 input_field_sections">
-        <h5>จากโรงเรียน</h5>
-            <input name="school_name" value="" placeholder="" type="text" class="form-control "/>
+        <h5><code>จากโรงเรียน *</code></h5>
+            <input name="school_name" value="" placeholder="" type="text" class="form-control " required/>
     </div>
     <div class="col-lg-2 input_field_sections">
-        <h5>ตำบล</h5>
-            <input name="school_tambol" id="school_tambol" value="" placeholder="" type="text" class="form-control "/>
+        <h5><code>ตำบล *</code></h5>
+            <input name="school_tambol" id="school_tambol" value="" placeholder="" type="text" class="form-control " required/>
     </div>
     <div class="col-lg-2 input_field_sections">
-        <h5>อำเภอ</h5>
-            <input name="school_district" id="school_district" value="" placeholder="" type="text" class="form-control "/>
+        <h5><code>อำเภอ *</code></h5>
+            <input name="school_district" id="school_district" value="" placeholder="" type="text" class="form-control " required/>
     </div>
     <div class="col-lg-2 input_field_sections">
-        <h5>จังหวัด</h5>
-            <input name="school_provience" id="school_provience" value="" placeholder="" type="text" class="form-control "/>
+        <h5><code>จังหวัด *</code></h5>
+            <input name="school_provience" id="school_provience" value="" placeholder="" type="text" class="form-control " required/>
     </div>
 </div>
 
 <div class="row">
     <div class="col-lg-1 input_field_sections">
-        <h5>นักธรรม </h5>
-        <select class="form-control" name="naktham_level" tabindex="7">
+        <h5><code>นักธรรม *</code> </h5>
+        <select class="form-control" name="naktham_level" tabindex="7" required>
             <?php 
                 $naktham_query = "SELECT * FROM naktham_level";
                 $query_naktham = mysqli_query($connection, $naktham_query);
@@ -56,7 +56,15 @@
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>ปีพ.ศ.ที่จบ</h5>
-            <input name="naktham_year" value="" placeholder="" type="text" class="form-control "/>
+        <select class="form-control" name="naktham_year" tabindex="7">
+            <?php 
+                for($i =0; $i <= 10 ;$i++)
+                {
+                    $year = date('Y') + 543 - $i;
+                    echo '<option value='.$year.'>'.$year.'</option>';
+                }
+            ?>
+        </select>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>ตำบล</h5>
@@ -74,8 +82,8 @@
 
 <div class="row">
     <div class="col-lg-1 input_field_sections">
-        <h5>บาลี </h5>
-        <select class="form-control" name="pali_level" tabindex="7">
+        <h5><code>บาลี *</code> </h5>
+        <select class="form-control" name="pali_level" tabindex="7" required>
             <?php 
                 $pal_query = "SELECT * FROM pal_level";
                 $query_pal = mysqli_query($connection, $pal_query);
@@ -95,7 +103,15 @@
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>ปีพ.ศ.ที่จบ</h5>
-            <input name="pali_year" value="" placeholder="" type="text" class="form-control "/>
+        <select class="form-control" name="pali_year" tabindex="7">
+            <?php 
+                for($i =0; $i <= 10 ;$i++)
+                {
+                    $year = date('Y') + 543 - $i;
+                    echo '<option value='.$year.'>'.$year.'</option>';
+                }
+            ?>
+        </select>
     </div>
     <div class="col-lg-2 input_field_sections">
         <h5>ตำบล</h5>
@@ -113,8 +129,8 @@
 
 <div class="row">
     <div class="col-lg-6 input_field_sections">
-        <h5>วิชาที่ถนัดเรียน </h5>
-        <select class="form-control" name="newstu_best_sub" tabindex="7">
+        <h5><code>วิชาที่ถนัดเรียน *</code> </h5>
+        <select class="form-control" name="newstu_best_sub" tabindex="7" required>
             <?php 
                 $best_query = "SELECT * FROM subjects";
                 $query_best = mysqli_query($connection, $best_query);
@@ -129,8 +145,8 @@
         </select>
     </div>
     <div class="col-lg-6 input_field_sections">
-        <h5>วิชาที่ไม่ถนัด </h5>
-        <select class="form-control" name="newstu_worst_sub" tabindex="7">
+        <h5><code>วิชาที่ไม่ถนัด *</code> </h5>
+        <select class="form-control" name="newstu_worst_sub" tabindex="7" required>
             <?php 
                 $worst_query = "SELECT * FROM subjects";
                 $query_worst = mysqli_query($connection, $worst_query);
