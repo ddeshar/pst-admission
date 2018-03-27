@@ -20,5 +20,6 @@
             $s_login_username = $row_user['username'];
             $s_login_email = $row_user['email'];
             $s_login_avatar = $row_user['avatar'];
+            $s_login_avatar = $row_user['status'];
             mysqli_free_result($result_user);
         }

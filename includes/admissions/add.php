@@ -95,63 +95,74 @@
             echo "Error: " . $education . "<br>" . mysqli_error($connection);
         }
 
-        $naktham_school             = mysqli_real_escape_string($connection, $_POST['naktham_school']);
-        $naktham_tambol             = mysqli_real_escape_string($connection, $_POST['naktham_tambol']);
-        $naktham_district           = mysqli_real_escape_string($connection, $_POST['naktham_district']);
-        $naktham_provience          = mysqli_real_escape_string($connection, $_POST['naktham_provience']);
-        $naktham_year               = mysqli_real_escape_string($connection, $_POST['naktham_year']);
         $naktham_level              = mysqli_real_escape_string($connection, $_POST['naktham_level']);
 
-        $select_naktham = "SELECT * FROM school WHERE school_name = '$naktham_school'";
-        $naktham_query= mysqli_query($connection, $select_naktham);
-        $naktham_obj = mysqli_fetch_array($naktham_query);
-       
-        $naktham_rowcount=mysqli_num_rows($naktham_query);
-        if($naktham_rowcount > 0){
-             $nakthamschool = $naktham_obj["school_id"];
+        if ($naktham_level == 1 ){
+            $naktham_year = '';
+            $nakthamschool = 2 ;
         }else{
-            $school_ins_nakt="INSERT INTO school (school_name, school_tambol, school_district, school_provience ) 
-            VALUES ('$naktham_school', '$naktham_tambol', '$naktham_district', '$naktham_provience')";
-            // echo $school . "<br>"; 
-            if (mysqli_query($connection, $school_ins_nakt)) {
-                $nakthamschool = mysqli_insert_id($connection);
-            } else {
-                echo "Error: " . $school . "<br>" . mysqli_error($connection);
+            $naktham_school             = mysqli_real_escape_string($connection, $_POST['naktham_school']);
+            $naktham_tambol             = mysqli_real_escape_string($connection, $_POST['naktham_tambol']);
+            $naktham_district           = mysqli_real_escape_string($connection, $_POST['naktham_district']);
+            $naktham_provience          = mysqli_real_escape_string($connection, $_POST['naktham_provience']);
+            $naktham_year               = mysqli_real_escape_string($connection, $_POST['naktham_year']);
+
+            $select_naktham = "SELECT * FROM school WHERE school_name = '$naktham_school'";
+            $naktham_query= mysqli_query($connection, $select_naktham);
+            $naktham_obj = mysqli_fetch_array($naktham_query);
+        
+            $naktham_rowcount=mysqli_num_rows($naktham_query);
+            if($naktham_rowcount > 0){
+                $nakthamschool = $naktham_obj["school_id"];
+            }else{
+                $school_ins_nakt="INSERT INTO school (school_name, school_tambol, school_district, school_provience ) 
+                VALUES ('$naktham_school', '$naktham_tambol', '$naktham_district', '$naktham_provience')";
+                // echo $school . "<br>"; 
+                if (mysqli_query($connection, $school_ins_nakt)) {
+                    $nakthamschool = mysqli_insert_id($connection);
+                } else {
+                    echo "Error: " . $school . "<br>" . mysqli_error($connection);
+                }
             }
         }
 
         $naktham="INSERT INTO `naktham` (`naktham_school`, `naktham_year`, `naktham_level`) VALUES 
         ('$nakthamschool', '$naktham_year', '$naktham_level')";
-        // echo $naktham . "<br>";            
 
         if (mysqli_query($connection, $naktham)) {
             $last_naktham = mysqli_insert_id($connection);
         } else {
             echo "Error: " . $naktham . "<br>" . mysqli_error($connection);
         } 
-
-        $pali_school                = mysqli_real_escape_string($connection, $_POST['pali_school']);
-        $pali_tambol                = mysqli_real_escape_string($connection, $_POST['pali_tambol']);
-        $pali_district              = mysqli_real_escape_string($connection, $_POST['pali_district']);
-        $pali_provience             = mysqli_real_escape_string($connection, $_POST['pali_provience']);
-        $pali_year                  = mysqli_real_escape_string($connection, $_POST['pali_year']);
+        
         $pali_level                 = mysqli_real_escape_string($connection, $_POST['pali_level']);
-
-        $select_pali = "SELECT * FROM school WHERE school_name = '$pali_school'";
-        $pali_query= mysqli_query($connection, $select_pali);
-        $pali_obj = mysqli_fetch_array($pali_query);
-       
-        $pali_rowcount=mysqli_num_rows($pali_query);
-        if($pali_rowcount > 0){
-             $palischool = $pali_obj["school_id"];
+        
+        if ($pali_level == 1 ){
+            $pali_year = '';
+            $palischool = 2 ;
         }else{
-            $school_ins_nakt="INSERT INTO school (school_name, school_tambol, school_district, school_provience ) 
-            VALUES ('$pali_school', '$pali_tambol', '$pali_district', '$pali_provience')";
-            // echo $school . "<br>"; 
-            if (mysqli_query($connection, $school_ins_nakt)) {
-                $palischool = mysqli_insert_id($connection);
-            } else {
-                echo "Error: " . $school . "<br>" . mysqli_error($connection);
+            $pali_school                = mysqli_real_escape_string($connection, $_POST['pali_school']);
+            $pali_tambol                = mysqli_real_escape_string($connection, $_POST['pali_tambol']);
+            $pali_district              = mysqli_real_escape_string($connection, $_POST['pali_district']);
+            $pali_provience             = mysqli_real_escape_string($connection, $_POST['pali_provience']);
+            $pali_year                  = mysqli_real_escape_string($connection, $_POST['pali_year']);
+
+            $select_pali = "SELECT * FROM school WHERE school_name = '$pali_school'";
+            $pali_query= mysqli_query($connection, $select_pali);
+            $pali_obj = mysqli_fetch_array($pali_query);
+        
+            $pali_rowcount=mysqli_num_rows($pali_query);
+            if($pali_rowcount > 0){
+                $palischool = $pali_obj["school_id"];
+            }else{
+                $school_ins_nakt="INSERT INTO school (school_name, school_tambol, school_district, school_provience ) 
+                VALUES ('$pali_school', '$pali_tambol', '$pali_district', '$pali_provience')";
+                // echo $school . "<br>"; 
+                if (mysqli_query($connection, $school_ins_nakt)) {
+                    $palischool = mysqli_insert_id($connection);
+                } else {
+                    echo "Error: " . $school . "<br>" . mysqli_error($connection);
+                }
             }
         }
 
@@ -238,14 +249,18 @@
         $newstu_worst_sub           = mysqli_real_escape_string($connection, $_POST['newstu_worst_sub']);
         $newstu_get_notice_from     = mysqli_real_escape_string($connection, $_POST['newstu_get_notice_from']);
         $newstu_user_id             = mysqli_real_escape_string($connection, $_POST['newstu_user_id']);
-        // $typer                      = '1';
-        
-        //แยกระหว่างชื่อกับนามสกุล
-        $temp = explode(".", $_FILES["image"]["name"]);
-        //ให้เปลี่ยนชื่อตามเวลาโดยใช้ฟังก์ชั่น
-        $newfilename = round(microtime(true)) . '.' . end($temp);
-        // หลังจากที่เปลี่ยนชื่อแล้ว จะไปอัพโหลดที่ โฟเดอร์ asset/uploads
-        move_uploaded_file($_FILES["image"]["tmp_name"], dirname($_SERVER['DOCUMENT_ROOT']) .'/admission/assets/img/newstu/' . $newfilename);
+        $imgFile                    = $_FILES["image"]["name"];
+
+        if($imgFile){
+            //แยกระหว่างชื่อกับนามสกุล
+            $temp = explode(".", $_FILES["image"]["name"]);
+            //ให้เปลี่ยนชื่อตามเวลาโดยใช้ฟังก์ชั่น
+            $newfilename = round(microtime(true)) . '.' . end($temp);
+            // หลังจากที่เปลี่ยนชื่อแล้ว จะไปอัพโหลดที่ โฟเดอร์ asset/uploads
+            move_uploaded_file($_FILES["image"]["tmp_name"], dirname($_SERVER['DOCUMENT_ROOT']) .'/admission/assets/img/newstu/' . $newfilename);
+        }else{
+            $newfilename = '';
+        }
 
         $newstudent="INSERT INTO `newstudent`(`newstu_titlename`, `newstu_name`, `newstu_lastname`, `newstu_chaya`, `newstu_petname`, `newstu_dob`, `newstu_bgroup`, `newstu_weight`, `newstu_height`, `newstu_nationalid`, `newstu_houseno`, `newstu_photo`, `newstu_get_notice_from`, `newstu_parents_id`, `newstu_sibling_id`, `newstu_wat_id`, `newstu_guardian_id`, `newstu_naktham_id`, `newstu_pali_id`, `newstu_education_id`, `newstu_address_id`, `newstu_evi_id`, `newstu_user_id`, `newstu_best_sub`, `newstu_worst_sub`, `created_at`, `newstu_admit_class`,`typer`) 
         VALUES ('$newstu_titlename', '$newstu_name', '$newstu_lastname', '$newstu_chaya', '$newstu_petname', '$newstu_dob', '$newstu_bgroup', '$newstu_weight', '$newstu_height', '$newstu_nationalid', '$newstu_houseno', '$newfilename', '$newstu_get_notice_from', '$last_parents', '$last_siblings', '$last_wats','$last_guardians','$last_naktham','$last_pali','$last_education','$last_address','$last_eviedence','$newstu_user_id','$newstu_best_sub', '$newstu_worst_sub', NOW(), '$newstu_admit_class', '$session_login_id')";

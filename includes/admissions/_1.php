@@ -41,7 +41,7 @@
             <input name="newstu_nationalid" value="" placeholder="" type="text" class="form-control " required/>
     </div>
     <div class="col-lg-3 input_field_sections">
-        <h5><code>ว/ด/ป/เกิด *</code></h5>
+        <h5><code>ป/ด/ว/เกิด 2037-12-21 *</code></h5>
             <input name="newstu_dob" value="" placeholder="2037-12-21" type="text" class="form-control " required/>
     </div>
 </div>
@@ -315,27 +315,27 @@
 <div class="row">
     <div class="col-lg-3 input_field_sections">
         <h5><code>ชื่อวัด *</code></h5>
-            <input name="wat_name" value="" placeholder="" type="text" class="form-control " required/>
+            <input name="wat_name" value="" placeholder="" type="text" class="form-control " />
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5><code>นามเจ้าอาวาส *</code></h5>
-            <input name="wat_abbot" value="" placeholder="" type="text" class="form-control " required/>
+            <input name="wat_abbot" value="" placeholder="" type="text" class="form-control " />
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5><code>โทรศัพท์ *</code></h5>
-            <input name="wat_tel" value="" placeholder="" type="text" class="form-control " required/>
+            <input name="wat_tel" value="" placeholder="" type="text" class="form-control " />
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5><code>ตำบล *</code></h5>
-            <input name="wat_tambol" value="" id="wat_tambol" placeholder="" type="text" class="form-control " required/>
+            <input name="wat_tambol" value="" id="wat_tambol" placeholder="" type="text" class="form-control " />
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5><code>อำเภอ *</code></h5>
-            <input name="wat_district" value="" id="wat_district" placeholder="" type="text" class="form-control " required/>
+            <input name="wat_district" value="" id="wat_district" placeholder="" type="text" class="form-control " />
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5><code>จังหวัด *</code></h5>
-            <input name="wat_provience" value="" id="wat_provience" placeholder="" type="text" class="form-control " required/>
+            <input name="wat_provience" value="" id="wat_provience" placeholder="" type="text" class="form-control " />
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5>รหัสไปรษณีย์</h5>

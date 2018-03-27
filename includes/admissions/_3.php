@@ -91,7 +91,7 @@
     <div class="col-lg-4">
         <div class="row">
             <div class="col-sm-12 m-t-35">
-                <h5><code>รูป ***</code></h5>
+                <h5>รูป</h5>
                 <input id="input-21" name="image" type="file" accept="image/*" class="file-loading">
             </div>
         </div>
@@ -100,7 +100,7 @@
 
 <div class="row">
     <div class="col-lg-6 input_field_sections">
-        <h5>บุคคลที่ผ่ามาสมัคร </h5>
+        <h5>บุคคลที่พามาสมัคร </h5>
         <select class="form-control" name="newstu_user_id" tabindex="7">
             <option value="">-</option>        
             <?php 

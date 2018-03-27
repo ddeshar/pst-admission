@@ -7,7 +7,8 @@
             <div class="card-block m-t-35" id="user_body">
                 <div class="table-toolbar">
                     <div class="btn-group">
-                        <a href="admission.php?source=add" id="editable_table_new" class=" btn btn-default"> Add student  <i class="fa fa-plus"></i> </a>
+                        <a href="admission.php?source=add" id="editable_table_new" class=" btn btn-default"> Add student  <i class="fa fa-plus"></i> </a> &nbsp; &nbsp;
+                        <a href="includes/_excel.php" class=" btn btn-danger"> Excel  <i class="fa fa-file-excel-o"></i> </a>
                     </div>
                     <div class="btn-group float-right users_grid_tools">
                         <div class="tools"></div>

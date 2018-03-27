@@ -8,6 +8,8 @@ EOD;
     include "includes/_header.php";
     include "includes/_nav.php";
     include "includes/_slide.php";
+    include "includes/_count.php";
+    include "includes/function.php";
 ?>
         <!-- /#left -->
         <div id="content" class="bg-container">
@@ -37,14 +39,14 @@ EOD;
                                                     <div class="float-left">
                                                         <span class="fa-stack fa-sm">
                                                         <i class="fa fa-circle fa-stack-2x"></i>
-                                                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse text-primary sales_hover"></i>
+                                                        <i class="fa fa-users fa-stack-1x fa-inverse text-primary sales_hover"></i>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
                                                         <span class="number_val" id="sales_count"></span>
-                                                        <i class="fa fa-long-arrow-up fa-2x"></i> 100 รูป
+                                                        <i class="fa fa-long-arrow-up fa-2x"></i> <?=$total?> รูป
                                                         <br/>
                                                         <span class="card_description">จำนวนนักเรียน</span>
                                                     </div>
@@ -59,14 +61,14 @@ EOD;
                                                     <div class="float-left">
                                                         <span class="fa-stack fa-sm">
                                                         <i class="fa fa-circle fa-stack-2x"></i>
-                                                        <i class="fa fa-eye fa-stack-1x fa-inverse text-success visit_icon"></i>
+                                                        <i class="fa fa-user fa-stack-1x fa-inverse text-success visit_icon"></i>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
                                                         <span class="number_val" id="visitors_count"></span><i
-                                                            class="fa fa-long-arrow-up fa-2x"></i> 100 รูป
+                                                            class="fa fa-long-arrow-up fa-2x"></i> <?=$ton?> รูป
                                                         <br/>
                                                         <span class="card_description">ม.ต้น</span>
                                                     </div>
@@ -81,14 +83,14 @@ EOD;
                                                     <div class="float-left">
                                                         <span class="fa-stack fa-sm">
                                                         <i class="fa fa-circle fa-stack-2x"></i>
-                                                        <i class="fa fa-usd fa-stack-1x fa-inverse text-warning revenue_icon"></i>
+                                                        <i class="fa fa-user fa-stack-1x fa-inverse text-warning revenue_icon"></i>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
                                                         <span class="number_val" id="revenue_count"></span><i
-                                                            class="fa fa-long-arrow-up fa-2x"></i> 100 รูป
+                                                            class="fa fa-long-arrow-up fa-2x"></i> <?=$plai?> รูป
                                                         <br/>
                                                         <span class="card_description">ม.ปลาย</span>
                                                     </div>
@@ -110,7 +112,7 @@ EOD;
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
                                                         <span class="number_val" id="subscribers_count"></span><i
-                                                            class="fa fa-long-arrow-down fa-2x"></i> 100 รูป
+                                                            class="fa fa-long-arrow-down fa-2x"></i> - รูป
                                                         <br/>
                                                         <span class="card_description">แนะนำจากรุ่นพี</span>
                                                     </div>
@@ -123,7 +125,7 @@ EOD;
                         </div>
                         <div class="row">
 
-                            <div class="col-lg-4 col-12 m-t-35">
+                            <!-- <div class="col-lg-4 col-12 m-t-35">
                                 <div class="card">
                                     <div class="card-header bg-white">
                                         This Month
@@ -134,8 +136,8 @@ EOD;
                                             Sales
                                             <span class="float-right text-muted progress-info">52%</span>
                                             <div id="progress-bar">
-                                                <!--<progress class="progress progress-danger" value="52"-->
-                                                <!--max="100"></progress>-->
+                                                <progress class="progress progress-danger" value="52"
+                                                max="100"></progress>
                                                 <div class="progress">
                                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
@@ -145,8 +147,8 @@ EOD;
                                             Projects
                                             <span class="float-right text-muted progress-primary">80%</span>
                                             <div id="progress-bar1">
-                                                <!--<progress class="progress progress-warning" value="80"-->
-                                                <!--max="100"></progress>-->
+                                                <progress class="progress progress-warning" value="80"
+                                                max="100"></progress>
                                                 <div class="progress">
                                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
@@ -156,8 +158,8 @@ EOD;
                                             Visitors
                                             <span class="float-right text-muted progress-warning">25%</span>
                                             <div id="progress-bar21">
-                                                <!--<progress class="progress progress-success" value="25"-->
-                                                <!--max="100"></progress>-->
+                                                <progress class="progress progress-success" value="25"
+                                                max="100"></progress>
                                                 <div class="progress" id="progress-bar2">
                                                     <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
@@ -167,7 +169,7 @@ EOD;
                                             New Users
                                             <span class="float-right text-muted progress-primary">93%</span>
                                             <div id="progress-bar5">
-                                                <!--<progress class="progress progress-primary" value="93" max="100"></progress>-->
+                                                <progress class="progress progress-primary" value="93" max="100"></progress>
                                                 <div class="progress">
                                                     <div class="progress-bar bg-primary" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
@@ -177,7 +179,7 @@ EOD;
                                             Revenue
                                             <span class="float-right text-muted progress-danger">50%</span>
                                             <div id="progress-bar3">
-                                                <!--<progress class="progress progress-danger" value="50" max="100"></progress>-->
+                                                <progress class="progress progress-danger" value="50" max="100"></progress>
                                                 <div class="progress">
                                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
@@ -187,7 +189,7 @@ EOD;
                                             Total sold
                                             <span class="float-right text-muted">40%</span>
                                             <div id="progress-bar4">
-                                                <!--<progress class="progress progress-mint" value="40" max="100"></progress>-->
+                                                <progress class="progress progress-mint" value="40" max="100"></progress>
                                                 <div class="progress">
                                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
@@ -205,7 +207,8 @@ EOD;
                                         </div>
                                         <div class="content">
                                             <div class="notes" contenteditable="true">
-                                                <div>Send e-mails.
+                                                <div>
+                                                    <a href="http://pstadmission.woc/dashboard.php">sss</a>
                                                     <br> Sometimes on purpose
                                                     <br>
                                                     It is a long established
@@ -222,73 +225,51 @@ EOD;
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-lg-4 col-12 m-t-35">
                                 <div class="card">
                                     <div class="card-header bg-white">
                                         <div class=" twitter_section_head">
-                                            Team Activities
+                                            นักเรียน ใหม่
                                         </div>
                                     </div>
                                     <div class="card-block twitter_section">
                                         <ul id="nt-example1">
+                                        <?php 
+                                            $strSQL = "SELECT * FROM `newstudent`  ORDER BY `newstudent`.`newstu_id` DESC LIMIT 10 ";
+                                            $new_stusent = mysqli_query($connection, $strSQL);
+
+                                            while($student_new = mysqli_fetch_array($new_stusent)){
+                                                $sub_date = $student_new["created_at"];
+                                                $ago = timeago($sub_date);
+                                        ?>
                                             <li>
                                                 <div class="row">
                                                     <div class="col-2 col-lg-3 col-xl-2">
-                                                        <img src="assets/img/images.jpg" class="rounded-circle"alt="image not found">
+                                                        <?php
+                                                        $test = $student_new["newstu_photo"];
+                                                            if($test > 0){ ?>
+                                                                <img src="<?php echo './assets/img/newstu/' . $test;?>" class="rounded-circle"alt="<?php echo $student_new["newstu_titlename"];?><?php echo $student_new["newstu_name"];?> <?php echo $student_new["newstu_lastname"];?>">
+                                                            <?php }else{ ?>
+                                                                <img src="assets/img/images.jpg" class="rounded-circle" alt="<?php echo $student_new["newstu_titlename"];?><?php echo $student_new["newstu_name"];?> <?php echo $student_new["newstu_lastname"];?>">
+                                                            <?php } ?>
                                                     </div>
                                                     <div class="col-10 col-lg-9 col-xl-10">
-                                                        <span class="name">Robert Rivera</span> <span
-                                                            class="time">2m ago</span>
+                                                        <a href="admission.php?source=profile&newstu=<?php echo $student_new["newstu_id"];?>">
+                                                        <span class="name"><?php echo $student_new["newstu_titlename"];?><?php echo $student_new["newstu_name"];?> <?php echo $student_new["newstu_lastname"];?></span> <span
+                                                            class="time"><?php echo $ago;?></span>
                                                         <br>
-                                                        <span class="msg">Lorem Ipsum is simply dummy text of the printing.</span>
+                                                        <!-- <span class="msg">Lorem Ipsum is simply dummy text of the printing.</span> -->
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <hr>
                                             </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-2 col-lg-3 col-xl-2">
-                                                        <img src="assets/img/images.jpg" class="rounded-circle"alt="image not found">
-                                                    </div>
-                                                    <div class="col-10 col-lg-9 col-xl-10">
-                                                        <span class="name">Robert Rivera</span> <span
-                                                            class="time">2m ago</span>
-                                                        <br>
-                                                        <span class="msg">Lorem Ipsum is simply dummy text of the printing.</span>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-2 col-lg-3 col-xl-2">
-                                                        <img src="assets/img/images.jpg" class="rounded-circle"alt="image not found">
-                                                    </div>
-                                                    <div class="col-10 col-lg-9 col-xl-10">
-                                                        <span class="name">Robert Rivera</span> <span
-                                                            class="time">2m ago</span>
-                                                        <br>
-                                                        <span class="msg">Lorem Ipsum is simply dummy text of the printing.</span>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-2 col-lg-3 col-xl-2">
-                                                        <img src="assets/img/images.jpg" class="rounded-circle"alt="image not found">
-                                                    </div>
-                                                    <div class="col-10 col-lg-9 col-xl-10">
-                                                        <span class="name">Robert Rivera</span> <span
-                                                            class="time">2m ago</span>
-                                                        <br>
-                                                        <span class="msg">Lorem Ipsum is simply dummy text of the printing.</span>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            </li>  
+                                            <?php 
+                                                }
+                                                mysqli_close($connection);
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -305,23 +286,23 @@ EOD;
 
 <?php
 $global_scripts_js = <<<EOD
-<script type="text/javascript" src="assets/vendors/raphael/js/raphael-min.js"></script>
-<script type="text/javascript" src="assets/vendors/d3/js/d3.min.js"></script>
-<script type="text/javascript" src="assets/vendors/c3/js/c3.min.js"></script>
-<script type="text/javascript" src="assets/vendors/toastr/js/toastr.min.js"></script>
-<script type="text/javascript" src="assets/vendors/switchery/js/switchery.min.js"></script>
-<script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.js" ></script>
-<script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.resize.js"></script>
-<script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.stack.js"></script>
-<script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.time.js"></script>
-<script type="text/javascript" src="assets/vendors/flotspline/js/jquery.flot.spline.min.js"></script>
-<script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.categories.js"></script>
-<script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.pie.js"></script>
-<script type="text/javascript" src="assets/vendors/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-<script type="text/javascript" src="assets/vendors/jquery_newsTicker/js/newsTicker.js"></script>
-<script type="text/javascript" src="assets/vendors/countUp.js/js/countUp.min.js"></script>
-<!--end of plugin scripts-->
-<script type="text/javascript" src="assets/js/pages/new_dashboard.js"></script>
+    <script type="text/javascript" src="assets/vendors/raphael/js/raphael-min.js"></script>
+    <script type="text/javascript" src="assets/vendors/d3/js/d3.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/c3/js/c3.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/toastr/js/toastr.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/switchery/js/switchery.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.js" ></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.stack.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.time.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotspline/js/jquery.flot.spline.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.categories.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="assets/vendors/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/jquery_newsTicker/js/newsTicker.js"></script>
+    <script type="text/javascript" src="assets/vendors/countUp.js/js/countUp.min.js"></script>
+    <!--end of plugin scripts-->
+    <script type="text/javascript" src="assets/js/pages/new_dashboard.js"></script>
 EOD;
 ?>
 
