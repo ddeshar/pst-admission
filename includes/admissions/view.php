@@ -8,7 +8,6 @@
                 <div class="table-toolbar">
                     <div class="btn-group">
                         <a href="admission.php?source=add" id="editable_table_new" class=" btn btn-default"> Add student  <i class="fa fa-plus"></i> </a>
-                        <a href="includes/_pdf_profile.php" id="editable_table_new" class=" btn btn-default"> Add student  <i class="fa fa-plus"></i> </a>
                     </div>
                     <div class="btn-group float-right users_grid_tools">
                         <div class="tools"></div>
@@ -62,9 +61,13 @@
                                         <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="admission.php?source=edit">
                                             <i class="fa fa-pencil text-warning"></i>
                                         </a>&nbsp; &nbsp;
-                                        <a class="delete hidden-xs hidden-sm" data-toggle="tooltip" data-placement="top" title="Delete" href="delete_user.html">
+                                        <!-- <a class="delete hidden-xs hidden-sm" data-toggle="tooltip" data-placement="top" title="Delete" href="delete_user.html">
                                             <i class="fa fa-trash text-danger"></i>
-                                    </a>
+                                        </a>&nbsp; &nbsp; -->
+                                        <a class="delete hidden-xs hidden-sm" data-toggle="tooltip" data-placement="top" title="PDF" href="includes/_pdf_profile.php?newstu=<?=$newstu_id?>">
+                                            <i class="fa fa-file text-danger"></i>
+                                        </a>
+                                    
                                     </td>
                                 </tr>
                                 <?php       }

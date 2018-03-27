@@ -70,13 +70,13 @@ $pdf->AddPage();
 $i = "01";
 // Set some content to print
 
-$detail_id = $_GET["id"];
+$detail_id = $_GET["newstu"];
 
-if(isset($_GET["id"])){
-        $detail_id = $_GET["id"];
+if(isset($_GET["newstu"])){
+        $detail_id = $_GET["newstu"];
         $sql = "SELECT CONCAT(N.newstu_titlename,'', N.newstu_name , ' ' ,N.newstu_lastname ) AS name, C.class_name AS class
         FROM newstudent AS N INNER JOIN class AS C ON N.newstu_admit_class = C.class_id
-        WHERE newstu_id = 3";
+        WHERE newstu_id = '$detail_id'";
         
         // SELECT * FROM detail WHERE detail_id='$detail_id'";
         $result = mysqli_query($connection, $sql);
@@ -93,18 +93,18 @@ if(isset($_GET["id"])){
 
 $ft = ' <div style="text-align:center">
             <b>ใบสมัครเรียน '.$name_head.'</b><br />
-            <b>ระดับมัธยมศึกษาตอนต้น เรียนต่อ '.$class.'</b><br /> 
+            <b>ระดับมัธยมศึกษาตอนต้น เรียนต่อ '.$class_head.'</b><br /> 
             <b>โรงเรียนพระปริยัติธรรมวัดโสธรวราราม  ตำบลหน้าเมือง  อำเภอเมืองฉะเชิงเทรา  จังหวัดฉะเชิงเทรา</b><br />
         </div> ';
 $pdf->writeHTML($ft, true, false, true, false, '');
 $pdf->SetFont('thsarabun', '', 14, '', true);
 
-// if(isset($_GET["id"])){
-        $detail_id = $_GET["id"];
-        $new_stu = "SELECT * FROM `newstu_view` WHERE newstu_id = 3";
+if(isset($_GET["newstu"])){
+        $detail_id = $_GET["newstu"];
+        $new_stu = "SELECT * FROM `newstu_view` WHERE newstu_id = '$detail_id'";
         $stu_result = mysqli_query($connection, $new_stu);
         include_once ('admissions/query.php');
-// }
+}
 // Set some content to print
 $html = <<<EOD
     ชื่อ <b>$newstu_titlename</b> <b>$newstu_name</b> นามสกุล <b> $newstu_lastname </b>ฉายา <b>  $newstu_chaya </b>  ชื่อเล่น <b>  $newstu_petname </b> เกิดวันที่ <b>  $newstu_dob </b> อายุ <b>  $newstu_dob </b> ปี <br>
