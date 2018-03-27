@@ -2,7 +2,7 @@
     function sendlinemesg() {
                         
         define('LINE_API',"https://notify-api.line.me/api/notify");
-        define('LINE_TOKEN','xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'); // line token
+        define('LINE_TOKEN','6KZvolmWS9SdCW3ADKyX7HyHB7sJGtaddo6aX5IASdF'); // line token
         function notify_message($message){
             $queryData = array('message' => $message);
             $queryData = http_build_query($queryData,'','&');

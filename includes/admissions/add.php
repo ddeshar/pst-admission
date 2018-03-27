@@ -272,7 +272,7 @@
                 $date = date("d-m-Y H:i:s");
 
                 // Code for sending message on line
-                $message = $mesg."\n".'ชื่อ: '.$name."\n".'ชั้น: '.$class."\n".'สรุปสถิติในการรับสมัครนักเรียน: '."\n".'ม.ต้น จำนวน '.$ton.' รูป'."\n".'ม.ปลาย จำนวน '.$plai.' รูป '."\n".'สรุปจำนวน '.$total.' รูป'."\n".'เวลา: '.DateThai($date)."\n".$creator;
+                $message = $mesg."\n".'ชื่อ: '.$name."\n".'ชั้น: '.$class."\n".'สรุปสถิติการรับสมัครนักเรียน: '."\n".'ม.ต้น จำนวน '.$ton.' รูป'."\n".'ม.ปลาย จำนวน '.$plai.' รูป '."\n".'สรุปจำนวน '.$total.' รูป'."\n".'เวลา: '.DateThai($date)."\n".$creator;
                 sendlinemesg();
                 // header('Content-Type: text/html; charset=utf-8');
                 $res = notify_message($message);
