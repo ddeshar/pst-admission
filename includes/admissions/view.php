@@ -8,7 +8,9 @@
                 <div class="table-toolbar">
                     <div class="btn-group">
                         <a href="admission.php?source=add" id="editable_table_new" class=" btn btn-default"> Add student  <i class="fa fa-plus"></i> </a> &nbsp; &nbsp;
-                        <a href="includes/_excel.php" class=" btn btn-danger"> Excel  <i class="fa fa-file-excel-o"></i> </a>
+                        <?php if($s_login_status == 500){ ?>
+                            <a href="includes/_excel.php" class=" btn btn-danger"> Excel  <i class="fa fa-file-excel-o"></i> </a>
+                        <?php } ?>
                     </div>
                     <div class="btn-group float-right users_grid_tools">
                         <div class="tools"></div>
@@ -29,25 +31,45 @@
                             </thead>
                             <tbody>
                             <?php 
+                            if($s_login_status == 500 ){
                                 $sql= "SELECT
                                             newstudent.newstu_id,
-                                            CONCAT(newstudent.newstu_titlename, newstudent.newstu_name,' ', newstudent.newstu_lastname,' ', newstudent.newstu_chaya ) AS `name`,
+                                            CONCAT( newstudent.newstu_titlename, newstudent.newstu_name, ' ', newstudent.newstu_lastname, ' ', newstudent.newstu_chaya ) AS `name`,
                                             newstudent.created_at,
                                             class.class_name,
-                                            address.address_provience 
+                                            address.address_provience,
+                                            address.address_tel
                                         FROM
                                             newstudent
                                             INNER JOIN class ON newstudent.newstu_admit_class = class.class_id
                                             INNER JOIN address ON newstudent.newstu_address_id = address.address_id";
-                                        $result = mysqli_query($connection, $sql);
-                                        if (mysqli_num_rows($result) > 0){
-                                            $i = 1;
-                                            while($row = mysqli_fetch_assoc($result)) {
-                                                $newstu_id              = $row['newstu_id'];
-                                                $name                   = $row['name'];
-                                                $class_name            = $row['class_name'];
-                                                $address_provience        = $row['address_provience'];
-                                                $created_at             = $row['created_at'];
+                                            
+                            }else if($s_login_status == 100 ){
+                                $sql= "SELECT
+                                            newstudent.newstu_id,
+                                            CONCAT( newstudent.newstu_titlename, newstudent.newstu_name, ' ', newstudent.newstu_lastname, ' ', newstudent.newstu_chaya ) AS `name`,
+                                            newstudent.created_at,
+                                            class.class_name,
+                                            address.address_provience,
+                                            address.address_tel
+                                        FROM
+                                            newstudent
+                                            INNER JOIN class ON newstudent.newstu_admit_class = class.class_id
+                                            INNER JOIN address ON newstudent.newstu_address_id = address.address_id 
+                                        WHERE
+                                            newstudent.typer = '$session_login_id'";
+                            }
+                                                        
+                            $result = mysqli_query($connection, $sql);
+
+                            if (mysqli_num_rows($result) > 0){
+                                $i = 1;
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    $newstu_id              = $row['newstu_id'];
+                                    $name                   = $row['name'];
+                                    $class_name            = $row['class_name'];
+                                    $address_provience        = $row['address_provience'];
+                                    $created_at             = $row['created_at'];
                             ?>
                                 <tr role="row" class="even">
                                     <td class="sorting_1"><?php echo $i++; ?></td>

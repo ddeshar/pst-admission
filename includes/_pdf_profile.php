@@ -6,6 +6,37 @@ ob_start();
 require_once('../assets/tcpdf/config/lang/thai.php');
 require_once('../assets/tcpdf/tcpdf.php');
 
+$detail_id = $_GET["newstu"];
+
+if(isset($_GET["newstu"])){
+    $detail_id = $_GET["newstu"];
+    $sql = "SELECT
+                CONCAT( s.newstu_titlename, '', s.newstu_name, ' ', s.newstu_lastname ) AS `name`,
+                C.class_name AS class,
+                n.notice_name AS noti
+            FROM
+                newstudent AS s
+                LEFT JOIN class AS C ON s.newstu_admit_class = C.class_id
+                LEFT JOIN notice AS n ON s.newstu_get_notice_from = n.notice_id 
+            WHERE
+                s.newstu_id = '$detail_id'";
+    
+    // SELECT * FROM detail WHERE detail_id='$detail_id'";
+    $result = mysqli_query($connection, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result);
+        $name_head    = $row["name"];
+        $class_head    = $row["class"];
+        $notice    = $row["noti"];
+        // $date       = DateThai($row["date"]);
+    }else{
+        $name_head    = "";
+        $class_head       = "";
+        $notice       = "";
+    }
+}
+
+
 class my_pdf extends TCPDF {
 
       //Page header
@@ -16,8 +47,9 @@ class my_pdf extends TCPDF {
 
       // Page footer
       public function Footer() {
+          global $notice;
       	$this->SetFont('thsarabun', '', 14, '', true);
-      	$footer_text = '<div><b>หมายเหตุ:</b> </div>';               
+      	$footer_text = '<div><b>หมายเหตุ:</b> ได้รับคำแนะนำจาก '.$notice.'</div>';               
         // $this->writeHTMLCell(100, 50, 10, 285, $footer_text, 0, 0, 0, true, 'L', true);  
 		$this->writeHTML($footer_text, true, true, true, true, '');
       }
@@ -62,34 +94,15 @@ $pdf->setFontSubsetting(true);
 $pdf->SetFont('thsarabun', '', 16, '', true);
 
 // Add a page
-$pdf->AddPage();
+$pdf->AddPage('P', 'A4');
+$tagvs = array('p' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+$pdf->setHtmlVSpace($tagvs);
 
 // set text shadow effect
 // $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
 $i = "01";
 // Set some content to print
-
-$detail_id = $_GET["newstu"];
-
-if(isset($_GET["newstu"])){
-        $detail_id = $_GET["newstu"];
-        $sql = "SELECT CONCAT(N.newstu_titlename,'', N.newstu_name , ' ' ,N.newstu_lastname ) AS name, C.class_name AS class
-        FROM newstudent AS N INNER JOIN class AS C ON N.newstu_admit_class = C.class_id
-        WHERE newstu_id = '$detail_id'";
-        
-        // SELECT * FROM detail WHERE detail_id='$detail_id'";
-        $result = mysqli_query($connection, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_array($result);
-            $name_head    = $row["name"];
-            $class_head    = $row["class"];
-            // $date       = DateThai($row["date"]);
-        }else{
-            $name_head    = "";
-            $class_head       = "";
-        }
-    }
 
 $ft = ' <div style="text-align:center">
             <b>ใบสมัครเรียน '.$name_head.'</b><br />
@@ -104,82 +117,101 @@ if(isset($_GET["newstu"])){
         $new_stu = "SELECT * FROM `newstu_view` WHERE newstu_id = '$detail_id'";
         $stu_result = mysqli_query($connection, $new_stu);
         include_once ('admissions/query.php');
+    
+    if($newstu_photo > 0){
+        $photo = $newstu_photo;
+    }else{
+        $photo = "default.jpg";
+    }
 }
+
 // Set some content to print
 $html = <<<EOD
-    ชื่อ <b>$newstu_titlename</b> <b>$newstu_name</b> นามสกุล <b> $newstu_lastname </b>ฉายา <b>  $newstu_chaya </b>  ชื่อเล่น <b>  $newstu_petname </b> เกิดวันที่ <b>  $newstu_dob </b> อายุ <b>  $newstu_dob </b> ปี <br>
-    หมู่โลหิต <b>  $newstu_bgroup </b> ปัจจุบัน น้ำหนัก <b>  $newstu_weight </b> กิโลกรัม ส่วนสูง <b>  $newstu_height </b> เซนติเมตร  เลขประจำตัวประชาชน <b>  $newstu_nationalid </b><br>
+    <p><b>ชื่อ </b> $newstu_titlename  $newstu_name<b> นามสกุล </b> $newstu_lastname <b>ฉายา </b>  $newstu_chaya </p>
+    <p><b>ชื่อเล่น </b>  $newstu_petname <b> เกิดวันที่ </b>  $newstu_dob <b> อายุ </b>  $newstu_dob <b> ปี  หมู่โลหิต </b>  $newstu_bgroup <b> ปัจจุบัน น้ำหนัก </b>  $newstu_weight <b> กิโลกรัม ส่วนสูง </b>  $newstu_height <b> เซนติเมตร</b></p>
+    <p><b>เลขประจำตัวประชาชน</b> $newstu_nationalid </p>
+    <p><b>เลขรหัสประจำบ้าน </b>  $newstu_houseno </p>
+    <p><b>ที่อยู่ตามทะเบียนบ้าน เลขที่ </b>  $address_no <b>  หมู่ </b>  $address_moo <b> บ้าน </b>  $address_house <b> ตำบล </b>  $address_tambol <b>อำเภอ </b>  $address_district <b> จังหวัด </b>  $address_provience</p>
+    <p><b>รหัสไปรษณีย์ </b>  $address_zip <b>โทรศัพท์นักเรียน</b>  $address_tel </p>
 
-    เลขรหัสประจำบ้าน <b>  $newstu_houseno </b>  ที่อยู่ตามทะเบียนบ้าน  	เลขที่ <b>  $address_no </b>  หมู่ <b>  $address_moo </b> บ้าน <b>  $address_house </b> ตำบล <b>  $address_tambol </b> <br>
-    อำเภอ <b>  $address_district </b> จังหวัด <b>  $address_provience </b> รหัสไปรษณีย์ <b>  $address_zip </b>โทรศัพท์นักเรียน<b>  $address_tel </b> <br>
-
-    สถานภาพบิดา-มารดา   <b> $par_status_des </b> <br>
-    บิดาผู้ให้กำเนิด ชื่อ-สกุล <b> $parent_f_name </b> อาชีพ <b> $FOCC </b> รายได้ต่อเดือน <b> $parent_f_income </b>บาท โทร. <b> $parent_f_tel </b> <br>
-    มารดาผู้ให้กำเนิด ชื่อ-สกุล <b> $parent_m_name </b> อาชีพ <b> $MOCC </b> รายได้ต่อเดือน <b> $parent_m_income </b>บาท โทร. <b> $parent_m_tel </b> <br>
-    จำนวนพี่น้องทั้งหมด <b> $sibling_total </b> คน พี่ชาย <b> $sibling_o_bro </b> คน  น้องชาย <b> $sibling_l_bro </b> คน  พี่สาว <b> $sibling_o_sis </b> คน  น้องสาว <b> $sibling_l_sis </b> คน นักเรียนเป็นบุตรคนที่ <b> $newstut_status </b> <br>
+    <p><b>สถานภาพบิดา-มารดา   </b> $par_status_des </p>
+    <p><b>บิดาผู้ให้กำเนิด ชื่อ-สกุล </b> $parent_f_name <b> อาชีพ </b> $FOCC <b> รายได้ต่อเดือน </b> $parent_f_income <b>บาท โทร. </b> $parent_f_tel </p>
+    <p><b>มารดาผู้ให้กำเนิด ชื่อ-สกุล </b> $parent_m_name <b> อาชีพ </b> $MOCC <b> รายได้ต่อเดือน </b> $parent_m_income <b>บาท โทร. </b> $parent_m_tel </p>
+    <p><b>จำนวนพี่น้องทั้งหมด </b> $sibling_total <b> คน พี่ชาย </b> $sibling_o_bro <b> คน  น้องชาย </b> $sibling_l_bro <b> คน  พี่สาว </b> $sibling_o_sis <b> คน  น้องสาว </b> $sibling_l_sis <b> คน นักเรียนเป็นบุตรคนที่ </b> $newstut_status </p>
     
-    ผู้ปกครอง ชื่อ-สกุล<b> $guardian_name </b> อาชีพ <b> $occupation_name </b> รายได้ต่อเดือน<b> $guardian_income </b> บาท โทร. <b> $guardian_tel </b> เลขประจำตัวประชาชน <b> $guardian_nid </b> <br>
-    เกี่ยวข้องกับนักเรียน เป็น  <b> $guardian_relation </b> <br>
+    <p><b>ผู้ปกครอง ชื่อ-สกุล</b> $guardian_name <b> อาชีพ </b> $occupation_name <b> รายได้ต่อเดือน</b> $guardian_income <b> บาท โทร. </b> $guardian_tel </p>
+    <p><b>เลขประจำตัวประชาชน </b> $guardian_nid <b>เกี่ยวข้องกับนักเรียน เป็น  </b> $guardian_relation </p>
 
-    การศึกษาชั้นสุดท้าย จบชั้น <b> $edu_class </b> จากโรงเรียน <b> $edu_sco_name </b>  ตำบล <b> $edu_tambol </b> อำเภอ <b> $edu_district </b> จังหวัด <b> $edu_provience </b> <br>
-    นักธรรม <b> $naktham_l_name </b>  สำนักเรียน <b> $na_sco_name </b> ตำบล <b> $na_tambol </b> อำเภอ <b> $na_district </b> จังหวัด <b> $sna_provience </b> ปีพ.ศ.ที่จบ <b> $naktham_year </b> <br>
-    บาลี <b> $pali_l_name </b> สำนักเรียน <b> $pa_sco_name </b> ตำบล <b> $pa_tambol </b> อำเภอ <b> $pa_district </b> จังหวัด <b> $pa_provience </b> ปีพ.ศ.ที่จบ <b> $naktham_year </b> <br>
+    <p><b>การศึกษาชั้นสุดท้าย จบชั้น </b> $edu_class <b> จากโรงเรียน </b> $edu_sco_name <b>  ตำบล </b> $edu_tambol <b> อำเภอ </b> $edu_district <b> จังหวัด </b> $edu_provience </p>
+    <p><b>นักธรรม </b> $naktham_l_name <b>  สำนักเรียน </b> $na_sco_name <b> ตำบล </b> $na_tambol <b> อำเภอ </b> $na_district <b> จังหวัด </b> $sna_provience <b> ปีพ.ศ.ที่จบ </b> $naktham_year </p>
+    <p><b>บาลี </b> $pali_l_name <b> สำนักเรียน </b> $pa_sco_name <b> ตำบล </b> $pa_tambol <b> อำเภอ </b> $pa_district <b> จังหวัด </b> $pa_provience <b> ปีพ.ศ.ที่จบ </b> $naktham_year </p>
 
-    ปัจจุบันสังกัดวัด <b> $wat_name </b> ตำบล <b> $wat_tambol </b> อำเภอ <b> $wat_district </b> จังหวัด <b> $wat_provience </b> รหัสไปรษณีย์ <b> $wat_postal </b> นามเจ้าอาวาส <b> $wat_abbot </b> <br>
-    โทรศัพท์ <b> $wat_tel </b>  <br>
+    <p><b>ปัจจุบันสังกัดวัด </b> $wat_name <b> ตำบล </b> $wat_tambol <b> อำเภอ </b> $wat_district </p> 
+    <p><b>จังหวัด </b> $wat_provience <b> รหัสไปรษณีย์ </b> $wat_postal <b> นามเจ้าอาวาส </b> $wat_abbot <b>โทรศัพท์ </b>$wat_tel </p>
+    <p><b>วิชาที่ถนัดเรียน </b> $best_sub <b> วิชาที่ไม่ถนัด </b> $worst_sub <b></p><br>
+
     
-    วิชาที่ถนัดเรียน <b> $best_sub </b> วิชาที่ไม่ถนัด <b> $worst_sub </b> <br> <br>
+    <p><b>หลักฐานในการสมัคร</b></p>
 
-    
-    <b>หลักฐานในการสมัคร</b> <br>
-
+    <p> 
         <table style="width:100%">
             <tr>
-                <td width="35%">วุฒิการศึกษา (ปพ.1) </td>
-                <td width="15%"><b>  $ev_1 </b></td>
-                <td width="35%">สำเนาทะเบียนบ้านนักเรียน</td>
-                <td width="15%"><b> $ev_7 </b></td>
+                <td width="35%"><b>วุฒิการศึกษา (ปพ.1)</b></td>
+                <td width="15%">$ev_1</td>
+                <td width="35%"><b>สำเนาทะเบียนบ้านนักเรียน</b></td>
+                <td width="15%">$ev_7</td>
             </tr>
             <tr>
-                <td>ใบประกาศนียบัตรจบการศึกษา (ปพ.2)</td>
-                <td><b> $ev_2 </b></td>
-                <td>สำเนาทะเบียนบ้านมารดาผู้ให้กำเนิด</td>
-                <td><b> $ev_4 </b></td>
+                <td><b>ใบประกาศนียบัตรจบการศึกษา (ปพ.2)</b></td>
+                <td>$ev_2</td>
+                <td><b>สำเนาทะเบียนบ้านมารดาผู้ให้กำเนิด</b></td>
+                <td>$ev_4</td>
             </tr>
             <tr>
-                <td>ใบรับรองผลการศึกษา (ปพ.7)</td>
-                <td><b> $ev_3 </b></td>
-                <td>สำเนาใบเปลี่ยนชื่อ-นามสกุล</td>
-                <td><b> $ev_11 </b></td>
+                <td><b>ใบรับรองผลการศึกษา (ปพ.7)</b></td>
+                <td>$ev_3</td>
+                <td><b>สำเนาใบเปลี่ยนชื่อ-นามสกุล</b></td>
+                <td>$ev_11</td>
             </tr>
             <tr>
-                <td>สำเนาทะเบียนบ้านบิดาผู้ให้กำเนิด</td>
-                <td><b> $ev_10 </b></td>
-                <td>สำเนาใบประกาศนียบัตร นักธรรมชั้น</td>
-                <td><b> $evi_8 </b></td>
+                <td><b>สำเนาทะเบียนบ้านบิดาผู้ให้กำเนิด</b></td>
+                <td>$ev_10</td>
+                <td><b>สำเนาใบประกาศนียบัตร นักธรรมชั้น</b></td>
+                <td>$evi_8</td>
             </tr>
             <tr>
-                <td>สำเนาหนังสือสุทธิแสดงสังกัดวัด</td>
-                <td><b> $ev_5 </b></td>
-                <td>สำเนาใบประกาศนียบัตร บาลีประโยค</td>
-                <td><b> $evi_9 </b></td>
+                <td><b>สำเนาหนังสือสุทธิแสดงสังกัดวัด</b></td>
+                <td>$ev_5</td>
+                <td><b>สำเนาใบประกาศนียบัตร บาลีประโยค</b></td>
+                <td>$evi_9</td>
             </tr>
             <tr>
-                <td>หนังสือรับรองจากวัดต้นสังกัด</td>
-                <td><b> $ev_6 </b></td>                
-                <td>หลักฐานอื่น ๆ (ระบุ)</td>
-                <td><b> $evi_12 </b></td>
+                <td><b>หนังสือรับรองจากวัดต้นสังกัด</b></td>
+                <td>$ev_6</td>                
+                <td><b>หลักฐานอื่น ๆ (ระบุ)</b></td>
+                <td>$evi_12</td>
             </tr>
         </table>
+    </p>
+
     <p>ข้าพเจ้าขอสมัครเข้าเรียน เพื่อศึกษาในโรงเรียนแห่งนี้ ตั้งแต่บัดนี้เป็นต้นไป  ข้าพเจ้าขอรับรองว่าข้อความข้างต้นนี้เป็นความจริงทุกประการ และข้าพเจ้าจะปฏิบัติตามระเบียบ ข้อบังคับ ของโรงเรียนทุกประการ.</p>
+<br>
+    <table style="width:100%">
+        <tr>
+            <td width="40%"> <img src="../assets/img/newstu/$photo" alt="test alt attribute" width="auto" height="150" border="0" /></td>
+            <td width="60%">            
+                <br><br>
+                <div style="text-align:center">
+                    ..............................................<br>
+                    <b>ลงชื่อ </b>$newstu_titlename $newstu_name $newstu_lastname <b>ผู้สมัคร</b> <br>
+                    <b>ว/ด/ป ที่สมัครเรียน</b> $created_at <br>
+                    <b>ลงชื่อ </b> $typer_firstname <b> ผู้รับสมัคร</b> <br>
+                </div>
+            </td>
+        </tr>
+    </table>
 EOD;
 
-$html .= '  <br />
-            <div style="text-align:center">
-            ลงชื่อ <b>'.$newstu_titlename.' '.$newstu_name.' '.$newstu_lastname.'</b> <br>
-            ผู้สมัคร	ว/ด/ป ที่สมัครเรียน<b>  '.$created_at.' </b> <br>
-            ลงชื่อ <b> '.$typer_firstname .' '.$typer_lastname.' </b> ผู้รับสมัคร <br>
-            </div>';
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
 // $pdf->writeHTML($html, true, false, true, false, '');

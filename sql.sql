@@ -78,6 +78,31 @@ FROM
 	INNER JOIN occupations AS f ON p.parent_f_occupation = f.occupation_id
 	INNER JOIN occupations AS m ON p.parent_m_occupation = m.occupation_id;
 
+SELECT
+    one.evid_detail AS evd1,
+    two.evid_detail AS evd2,
+    thr.evid_detail AS evd3,
+    fore.evid_detail AS evd4,
+    fiv.evid_detail AS evd5,
+    six.evid_detail AS evd6,
+    sev.evid_detail AS evd7,
+    evi.evi_8,
+    evi.evi_9,
+    ten.evid_detail AS evd10,
+    elv.evid_detail AS evd11,
+    evi.evi_12
+FROM
+eviedence AS evi
+    RIGHT JOIN evid_detail AS one ON evi.evi_1 = one.evid_id
+    RIGHT JOIN evid_detail AS two ON evi.evi_2 = two.evid_id 
+    RIGHT JOIN evid_detail AS thr ON evi.evi_3 = thr.evid_id 
+    RIGHT JOIN evid_detail AS fore ON evi.evi_4 = fore.evid_id 
+    RIGHT JOIN evid_detail AS fiv ON evi.evi_5 = fiv.evid_id 
+    RIGHT JOIN evid_detail AS six ON evi.evi_6 = six.evid_id 
+    RIGHT JOIN evid_detail AS sev ON evi.evi_7 = sev.evid_id 
+    RIGHT JOIN evid_detail AS ten ON evi.evi_10 = ten.evid_id 
+    RIGHT JOIN evid_detail AS elv ON evi.evi_11 = elv.evid_id
+
 CREATE VIEW `pst_admission`.`parentview` AS SELECT
 	g.guardian_id,
 	g.guardian_name,
@@ -224,10 +249,10 @@ FROM
     LEFT JOIN users AS t ON N.typer = t.user_id
     LEFT JOIN users AS U ON N.newstu_user_id = U.user_id
     LEFT JOIN class AS C ON N.newstu_admit_class = C.class_id
-    LEFT JOIN parentview AS P ON N.newstu_parents_id = P.parent_id
-    LEFT JOIN paliview AS PA ON N.newstu_pali_id = PA.pali_id
-    LEFT JOIN nakthamview AS NA ON N.newstu_naktham_id = NA.naktham_id
-    LEFT JOIN guardianview AS G ON N.newstu_guardian_id = G.guardian_id
+    LEFT JOIN parentviews AS P ON N.newstu_parents_id = P.parent_id
+    LEFT JOIN paliviews AS PA ON N.newstu_pali_id = PA.pali_id
+    LEFT JOIN nakthamviews AS NA ON N.newstu_naktham_id = NA.naktham_id
+    LEFT JOIN guardianviews AS G ON N.newstu_guardian_id = G.guardian_id
     LEFT JOIN edudationview AS ED ON N.newstu_education_id = ED.education_id
     LEFT JOIN subjects AS B ON N.newstu_best_sub = B.subject_id 
     LEFT JOIN subjects AS WO ON N.newstu_worst_sub = WO.subject_id

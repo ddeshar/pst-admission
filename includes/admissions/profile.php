@@ -18,8 +18,17 @@
                         <div class="text-center">
                             <div class="form-group">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-new thumb_zoom zoom admin_img_width">                                    
-                                        <img src="<?php echo './assets/img/newstu/' . $row["newstu_photo"];?>" alt="admin" class="admin_img_width"></div>
+                                    <div class="fileinput-new thumb_zoom zoom admin_img_width">
+                                        <?php 
+                                            $photo = $row["newstu_photo"];
+                                            if($photo > 0){
+                                                $test = $photo;
+                                            }else{
+                                                $test = "default.jpg";
+                                            }
+                                        ?>
+                                            <img src="<?php echo './assets/img/newstu/' . $test;?>" width="150" height="auto" alt="<?php echo $row["newstu_titlename"];?><?php echo $row["newstu_name"];?> <?php echo $row["newstu_lastname"];?>">
+                                    </div>
                                     <div class="fileinput-preview fileinput-exists thumb_zoom zoom admin_img_width"></div>
                                     <a class="delete hidden-xs hidden-sm" data-toggle="tooltip" data-placement="top" title="PDF" href="includes/_pdf_profile.php?newstu=<?=$row["newstu_id"]?>">
                                             <i class="fa fa-file text-danger"></i> PDF

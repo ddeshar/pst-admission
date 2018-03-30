@@ -18,7 +18,7 @@
             $last_address = mysqli_insert_id($connection);
             // echo $address . "<br>";            
         } else {
-            echo "Error: " . $address . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $address . "<br>" . mysqli_error($connection);
         }
 
         $parent_f_name              = mysqli_real_escape_string($connection, $_POST['parent_f_name']);
@@ -38,7 +38,7 @@
             $last_parents = mysqli_insert_id($connection);
             // echo $parents . "<br>";            
         } else {
-            echo "Error: " . $parents . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $parents . "<br>" . mysqli_error($connection);
         }
 
         $sibling_total              = mysqli_real_escape_string($connection, $_POST['sibling_total']);
@@ -55,7 +55,7 @@
             $last_siblings = mysqli_insert_id($connection);
             // echo $siblings . "<br>";            
         } else {
-            echo "Error: " . $siblings . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $siblings . "<br>" . mysqli_error($connection);
         }
        
         $school_name                = mysqli_real_escape_string($connection, $_POST['school_name']);
@@ -78,7 +78,7 @@
             if (mysqli_query($connection, $school)) {
                 $last_school = mysqli_insert_id($connection);
             } else {
-                echo "Error: " . $school . "<br>" . mysqli_error($connection);
+                // echo "Error: " . $school . "<br>" . mysqli_error($connection);
             }
         }
 
@@ -92,7 +92,7 @@
             $last_education = mysqli_insert_id($connection);
             // echo $education . "<br>";            
         } else {
-            echo "Error: " . $education . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $education . "<br>" . mysqli_error($connection);
         }
 
         $naktham_level              = mysqli_real_escape_string($connection, $_POST['naktham_level']);
@@ -121,7 +121,7 @@
                 if (mysqli_query($connection, $school_ins_nakt)) {
                     $nakthamschool = mysqli_insert_id($connection);
                 } else {
-                    echo "Error: " . $school . "<br>" . mysqli_error($connection);
+                    // echo "Error: " . $school . "<br>" . mysqli_error($connection);
                 }
             }
         }
@@ -132,7 +132,7 @@
         if (mysqli_query($connection, $naktham)) {
             $last_naktham = mysqli_insert_id($connection);
         } else {
-            echo "Error: " . $naktham . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $naktham . "<br>" . mysqli_error($connection);
         } 
         
         $pali_level                 = mysqli_real_escape_string($connection, $_POST['pali_level']);
@@ -161,7 +161,7 @@
                 if (mysqli_query($connection, $school_ins_nakt)) {
                     $palischool = mysqli_insert_id($connection);
                 } else {
-                    echo "Error: " . $school . "<br>" . mysqli_error($connection);
+                    // echo "Error: " . $school . "<br>" . mysqli_error($connection);
                 }
             }
         }
@@ -172,7 +172,7 @@
         if (mysqli_query($connection, $pali)) {
             $last_pali = mysqli_insert_id($connection);
         } else {
-            echo "Error: " . $pali . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $pali . "<br>" . mysqli_error($connection);
         }
 
         $guardian_name              = mysqli_real_escape_string($connection, $_POST['guardian_name']);
@@ -189,7 +189,7 @@
             $last_guardians = mysqli_insert_id($connection);
             // echo $guardians . "<br>";            
         } else {
-            echo "Error: " . $guardians . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $guardians . "<br>" . mysqli_error($connection);
         }
 
         $wat_name                   = mysqli_real_escape_string($connection, $_POST['wat_name']);
@@ -207,7 +207,7 @@
             $last_wats = mysqli_insert_id($connection);
             // echo $wats . "<br>";            
         } else {
-            echo "Error: " . $wats . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $wats . "<br>" . mysqli_error($connection);
         }
 
         $evi_1                      = mysqli_real_escape_string($connection, $_POST['evi_1']);
@@ -230,7 +230,7 @@
             $last_eviedence = mysqli_insert_id($connection);
             // echo $eviedence . "<br>";
         } else {
-            echo "Error: " . $eviedence . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $eviedence . "<br>" . mysqli_error($connection);
         }
 
         $newstu_admit_class         = mysqli_real_escape_string($connection, $_POST['admit_class']);
@@ -296,7 +296,7 @@
             header('Location: admission.php?source=profile&newstu='.$last_newstudent);
             // echo $newstudent . "<br>";
         } else {
-            echo "Error: " . $newstudent . "<br>" . mysqli_error($connection);
+            // echo "Error: " . $newstudent . "<br>" . mysqli_error($connection);
         }
     }
 

@@ -140,7 +140,7 @@ if (mysqli_num_rows($stu_result) > 0) {
     $na_sco_name        = $row["na_sco_name"];
     $na_tambol          = $row["na_tambol"];
     $na_district        = $row["na_district"];
-    $sna_provience      = $row["sna_provience"];
+    $sna_provience      = $row["na_provience"];
 
     $guardian_name      = $row["guardian_name"];
     $guardian_income    = $row["guardian_income"];

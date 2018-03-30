@@ -1,172 +1,311 @@
-<?php
-require 'includes/db.php';
-
-  if(isset($_POST['btn-login'])){
-
-    $login_username = mysqli_real_escape_string($connection, trim($_POST["username"]));
-    $login_password = mysqli_real_escape_string($connection, trim($_POST["password"]));
-
-    $salt = 'tikde78uj4ujuhlaoikiksakeidke';
-    $hash_login_password = hash_hmac('sha256', $login_password, $salt);
-
-    $sql = "SELECT * FROM users WHERE username=? AND password=?";
-    $stmt = mysqli_prepare($connection, $sql);
-    mysqli_stmt_bind_param($stmt,"ss", $login_username,$hash_login_password);
-    mysqli_execute($stmt);
-    $result_user = mysqli_stmt_get_result($stmt);
-
-    if ($result_user->num_rows == 1) {
-        session_start();
-        $row_user = mysqli_fetch_array($result_user,MYSQLI_ASSOC);
-        $_SESSION['user_id'] = $row_user['user_id'];
-
-        if ($row_user['status'] == 500) {
-          $_SESSION['is_admin'] = 500;
-          $_SESSION['login_username'] = $row_user['login_username'];
-          header("Location: dashboard.php");
-
-        }elseif ($row_user['status'] == 100) {
-          $_SESSION['is_member'] = 100;
-          $_SESSION['login_username'] = $row_user['login_username'];
-          header("Location: admission.php?source=add");
-
-        }elseif ($row_user['status'] == 0) {
-          $_SESSION['is_user'] = 0;
-          $_SESSION['login_username'] = $row_user['login_username'];
-          header("Location: student.php");
-        }
-    } else{
-      // $error = "die('Query Failed' . mysqli_error($conn))";
-
-      $error =  "sorry ผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-    }
-  }
+<?php 
+$global_scripts_css = <<<EOD
+<link type="text/css" rel="stylesheet" href="assets/vendors/c3/css/c3.min.css"/>
+<link type="text/css" rel="stylesheet" href="assets/vendors/toastr/css/toastr.min.css"/>
+<link type="text/css" rel="stylesheet" href="assets/vendors/switchery/css/switchery.min.css" />
+<link type="text/css" rel="stylesheet" href="assets/css/pages/new_dashboard.css"/>
+EOD;
+    include "includes/_header.php";
+    include "includes/_nav.php";
+    include "includes/_slide.php";
+    include "includes/_count.php";
+    include "includes/function.php";
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login | Admire</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="img/logo1.ico"/>
-    <!--Global styles -->
-    <link type="text/css" rel="stylesheet" href="./assets/css/components.css"/>
-    <link type="text/css" rel="stylesheet" href="./assets/css/custom.css"/>
-    <!--End of Global styles -->
-    <!--Plugin styles-->
-    <link type="text/css" rel="stylesheet" href="./assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css"/>
-    <link type="text/css" rel="stylesheet" href="./assets/vendors/wow/css/animate.css"/>
-    <!--End of Plugin styles-->
-    <link type="text/css" rel="stylesheet" href="./assets/css/pages/login.css"/>
-</head>
-<body>
-    <div class="preloader" style=" position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 100000;
-            backface-visibility: hidden;
-            background: #ffffff;">
-        <div class="preloader_img" style="width: 200px;
-                height: 200px;
-                position: absolute;
-                left: 48%;
-                top: 48%;
-                background-position: center;
-                z-index: 999999">
-            <img src="./assets/img/loader.gif" style=" width: 40px;" alt="loading...">
-        </div>
-    </div>
-<div class="container wow fadeInDown" data-wow-delay="0.5s" data-wow-duration="2s">
-    <div class="row">
-        <div class="col-lg-8 push-lg-2 col-md-10 push-md-1 col-sm-10 push-sm-1 login_top_bottom">
-            <div class="row">
-                <div class="col-lg-8 push-lg-2 col-md-10 push-md-1 col-sm-12">
-                    <div class="login_logo login_border_radius1">
-                        <h3 class="text-center">
-                            <img src="./assets/img/logow.png" alt="josh logo" class="admire_logo"><span class="text-white"> PST AdmissiOn &nbsp;<br/>
-                                Log In</span>
-                        </h3>
+        <!-- /#left -->
+        <div id="content" class="bg-container">
+            <header class="head">
+                <div class="main-bar">
+                    <div class="row">
+                    <div class="col-6">
+                        <h4 class="m-t-5">
+                            <i class="fa fa-home"></i>
+                            แผงควบคุม
+                        </h4>
                     </div>
-                    <div class="bg-white login_content login_border_radius">
-                        <form action="index.php" method="post" >
-                        <!-- <form action="index.php" id="login_validator" method="post" class="login_validator"> -->
-                            <div class="form-group">
-                                <label for="text" class="col-form-label"> username</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon input_email"><i
-                                            class="fa fa-envelope text-primary"></i></span>
-                                    <input type="text" class="form-control  form-control-md" id="text" name="username" placeholder="Username">
-                                </div>
-                            </div>
-                            <!--</h3>-->
-                            <div class="form-group">
-                                <label for="password" class="col-form-label">Password</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon addon_password"><i
-                                            class="fa fa-lock text-primary"></i></span>
-                                    <input type="password" class="form-control form-control-md" id="password"   name="password" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <input type="submit" name="btn-login" value="Log In" class="btn btn-primary btn-block login_button">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- <div class="form-group">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input form-control">
-                                        <span class="custom-control-indicator"></span>
-                                        <a class="custom-control-description">Keep me logged in</a>
-                                    </label>
-                                </div>
-                                <div class="col-6 text-right forgot_pwd">
-                                    <a href="forgot_password.html" class="custom-control-description forgottxt_clr">Forgot password?</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-6 col-sm-6 m-t-10">
-                                    <div class="icon-white btn-facebook icon_padding loginpage_border">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        <span class="text-white icon_padding text-center question_mark">Log In With Facebook</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6 pull-lg-right m-t-10">
-                                    <div class="icon-white btn-google icon_padding loginpage_border">
-                                        <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                        <span class="text-white icon_padding question_mark">Log In With Google+</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Don't you have an Account? </label>
-                            <a href='register.html' class="text-primary login_hover"><b>Sign Up</b></a>
-                        </div> -->
                     </div>
                 </div>
+            </header>
+            <div class="outer">
+                <div class="inner bg-container">
+                    <form action="" method="post">
+                        <div class="row">
+                            <div class="col-xl-12 col-12">
+                                <div class="row">
+                                    <div class="col-sm-6 col-12 col-lg-3">
+                                        <div class="bg-primary top_cards">
+                                            <div class="row icon_margin_left">
+
+                                                <div class="col-lg-5 col-5 icon_padd_left">
+                                                    <div class="float-left">
+                                                        <span class="fa-stack fa-sm">
+                                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                                        <i class="fa fa-users fa-stack-1x fa-inverse text-primary sales_hover"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-7 icon_padd_right">
+                                                    <div class="float-right cards_content">
+                                                        <span class="number_val" id="sales_count"></span>
+                                                        <i class="fa fa-long-arrow-up fa-2x"></i> <?=$total?> รูป
+                                                        <br/>
+                                                        <span class="card_description">จำนวนนักเรียน</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-lg-3">
+                                        <div class="bg-success top_cards">
+                                            <div class="row icon_margin_left">
+                                                <div class="col-lg-5  col-5 icon_padd_left">
+                                                    <div class="float-left">
+                                                        <span class="fa-stack fa-sm">
+                                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                                        <i class="fa fa-user fa-stack-1x fa-inverse text-success visit_icon"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-7 icon_padd_right">
+                                                    <div class="float-right cards_content">
+                                                        <span class="number_val" id="visitors_count"></span><i
+                                                            class="fa fa-long-arrow-up fa-2x"></i> <?=$ton?> รูป
+                                                        <br/>
+                                                        <span class="card_description">ม.ต้น</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-lg-3">
+                                        <div class="bg-warning top_cards">
+                                            <div class="row icon_margin_left">
+                                                <div class="col-lg-5 col-5 icon_padd_left">
+                                                    <div class="float-left">
+                                                        <span class="fa-stack fa-sm">
+                                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                                        <i class="fa fa-user fa-stack-1x fa-inverse text-warning revenue_icon"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-7 icon_padd_right">
+                                                    <div class="float-right cards_content">
+                                                        <span class="number_val" id="revenue_count"></span><i
+                                                            class="fa fa-long-arrow-up fa-2x"></i> <?=$plai?> รูป
+                                                        <br/>
+                                                        <span class="card_description">ม.ปลาย</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-lg-3">
+                                        <div class="bg-mint top_cards">
+                                            <div class="row icon_margin_left">
+                                                <div class="col-lg-5 col-5 icon_padd_left">
+                                                    <div class="float-left">
+                                                        <span class="fa-stack fa-sm">
+                                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                                        <i class="fa fa-users  fa-stack-1x fa-inverse text-mint sub"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-7 icon_padd_right">
+                                                    <div class="float-right cards_content">
+                                                        <span class="number_val" id="subscribers_count"></span><i
+                                                            class="fa fa-long-arrow-down fa-2x"></i> - รูป
+                                                        <br/>
+                                                        <span class="card_description">แนะนำจากรุ่นพี</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <!-- <div class="col-lg-4 col-12 m-t-35">
+                                <div class="card">
+                                    <div class="card-header bg-white">
+                                        This Month
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="task-item">
+
+                                            Sales
+                                            <span class="float-right text-muted progress-info">52%</span>
+                                            <div id="progress-bar">
+                                                <progress class="progress progress-danger" value="52"
+                                                max="100"></progress>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item">
+                                            Projects
+                                            <span class="float-right text-muted progress-primary">80%</span>
+                                            <div id="progress-bar1">
+                                                <progress class="progress progress-warning" value="80"
+                                                max="100"></progress>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item">
+                                            Visitors
+                                            <span class="float-right text-muted progress-warning">25%</span>
+                                            <div id="progress-bar21">
+                                                <progress class="progress progress-success" value="25"
+                                                max="100"></progress>
+                                                <div class="progress" id="progress-bar2">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item">
+                                            New Users
+                                            <span class="float-right text-muted progress-primary">93%</span>
+                                            <div id="progress-bar5">
+                                                <progress class="progress progress-primary" value="93" max="100"></progress>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item">
+                                            Revenue
+                                            <span class="float-right text-muted progress-danger">50%</span>
+                                            <div id="progress-bar3">
+                                                <progress class="progress progress-danger" value="50" max="100"></progress>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item">
+                                            Total sold
+                                            <span class="float-right text-muted">40%</span>
+                                            <div id="progress-bar4">
+                                                <progress class="progress progress-mint" value="40" max="100"></progress>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-12 m-t-35">
+                                <div class="block widget-notes">
+                                    <div class="card" id="notes_section">
+                                        <div class="card-header bg-white">
+                                            Notes
+                                        </div>
+                                        <div class="content">
+                                            <div class="notes" contenteditable="true">
+                                                <div>
+                                                    <a href="http://pstadmission.woc/dashboard.php">sss</a>
+                                                    <br> Sometimes on purpose
+                                                    <br>
+                                                    It is a long established
+                                                    <br> Contrary to popular belief.
+                                                    <br> <i>Bootstrap4 admire admin</i>
+                                                    <br>Company status
+                                                    <br> Sometime is special
+                                                    <br> <b>Meeting with CEO</b>
+                                                    <br> Team out
+                                                    <br> welcome to admire
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-lg-4 col-12 m-t-35">
+                                <div class="card">
+                                    <div class="card-header bg-white">
+                                        <div class=" twitter_section_head">
+                                            นักเรียน ใหม่
+                                        </div>
+                                    </div>
+                                    <div class="card-block twitter_section">
+                                        <ul id="nt-example1">
+                                        <?php 
+                                            $strSQL = "SELECT * FROM `newstudent`  ORDER BY `newstudent`.`newstu_id` DESC LIMIT 10 ";
+                                            $new_stusent = mysqli_query($connection, $strSQL);
+
+                                            while($student_new = mysqli_fetch_array($new_stusent)){
+                                                $sub_date = $student_new["created_at"];
+                                                $ago = timeago($sub_date);
+                                        ?>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-2 col-lg-3 col-xl-2">
+                                                        <?php
+                                                        $test = $student_new["newstu_photo"];
+                                                            if($test > 0){ ?>
+                                                                <img src="<?php echo './assets/img/newstu/' . $test;?>" class="rounded-circle"alt="<?php echo $student_new["newstu_titlename"];?><?php echo $student_new["newstu_name"];?> <?php echo $student_new["newstu_lastname"];?>">
+                                                            <?php }else{ ?>
+                                                                <img src="assets/img/newstu/default.jpg" class="rounded-circle" alt="<?php echo $student_new["newstu_titlename"];?><?php echo $student_new["newstu_name"];?> <?php echo $student_new["newstu_lastname"];?>">
+                                                            <?php } ?>
+                                                    </div>
+                                                    <div class="col-10 col-lg-9 col-xl-10">
+                                                        <a href="admission.php?source=profile&newstu=<?php echo $student_new["newstu_id"];?>">
+                                                        <span class="name"><?php echo $student_new["newstu_titlename"];?><?php echo $student_new["newstu_name"];?> <?php echo $student_new["newstu_lastname"];?></span> <span
+                                                            class="time"><?php echo $ago;?></span>
+                                                        <br>
+                                                        <!-- <span class="msg">Lorem Ipsum is simply dummy text of the printing.</span> -->
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </li>
+                                            <?php 
+                                                }
+                                                mysqli_close($connection);
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>          
+                    </form>         
+                    <!-- /.inner -->
+                </div>
+                <!-- /.outer -->
             </div>
         </div>
-    </div>
-</div>
-<!-- global js -->
-<script type="text/javascript" src="./assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="./assets/js/tether.min.js"></script>
-<script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
-<!-- end of global js-->
-<!--Plugin js-->
-<script type="text/javascript" src="./assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
-<script type="text/javascript" src="./assets/vendors/wow/js/wow.min.js"></script>
-<!--End of plugin js-->
-<script type="text/javascript" src="./assets/js/pages/login.js"></script>
-</body>
+        <!-- /#content -->
 
-</html>
+<?php
+$global_scripts_js = <<<EOD
+    <script type="text/javascript" src="assets/vendors/raphael/js/raphael-min.js"></script>
+    <script type="text/javascript" src="assets/vendors/d3/js/d3.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/c3/js/c3.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/toastr/js/toastr.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/switchery/js/switchery.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.js" ></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.stack.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.time.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotspline/js/jquery.flot.spline.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.categories.js"></script>
+    <script type="text/javascript" src="assets/vendors/flotchart/js/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="assets/vendors/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script type="text/javascript" src="assets/vendors/jquery_newsTicker/js/newsTicker.js"></script>
+    <script type="text/javascript" src="assets/vendors/countUp.js/js/countUp.min.js"></script>
+    <!--end of plugin scripts-->
+    <script type="text/javascript" src="assets/js/pages/new_dashboard.js"></script>
+EOD;
+?>
+
+<?php 
+    include "includes/_footer.php";
+?>

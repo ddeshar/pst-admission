@@ -4,7 +4,7 @@
     include 'includes/session.php';
     if(isset($_SESSION['user_id'])) {
     } else {
-      header("location: index.php");
+      header("location: login.php");
     }
 ?>
 <!doctype html>
