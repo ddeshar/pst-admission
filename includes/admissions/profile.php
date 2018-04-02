@@ -6,7 +6,7 @@
 
                     $students = $_GET["newstu"];
                     
-                    $sql = "SELECT * FROM `newstu_view` WHERE newstu_id = '$students'";
+                    $sql = "SELECT * FROM `student` WHERE newstu_id = '$students'";
                     $query = mysqli_query($connection, $sql);
 
                     if (mysqli_num_rows($query) > 0) {
@@ -145,64 +145,55 @@
                                         <tr>
                                             <td>วุฒิการศึกษา (ปพ.1)</td>
                                             <td><?php
-                                                $new = $row["evi_1"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_1"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>ใบประกาศนียบัตรจบการศึกษา (ปพ.2)</td>
                                             <td><?php
-                                                $new = $row["evi_2"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_2"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>ใบรับรองผลการศึกษา (ปพ.7)</td>
                                             <td><?php
-                                                $new = $row["evi_3"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_3"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>สำเนาทะเบียนบ้านบิดาผู้ให้กำเนิด</td>
                                             <td><?php
-                                                $new = $row["evi_4"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_4"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>สำเนาหนังสือสุทธิแสดงสังกัดวัด</td>
                                             <td><?php
-                                                $new = $row["evi_5"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_5"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>หนังสือรับรองจากวัดต้นสังกัด</td>
                                             <td><?php
-                                                $new = $row["evi_6"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_6"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>สำเนาทะเบียนบ้านนักเรียน</td>
                                             <td><?php
-                                                $new = $row["evi_7"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_7"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>สำเนาทะเบียนบ้านมารดาผู้ให้กำเนิด</td>
                                             <td><?php
-                                                $new = $row["evi_10"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_10"];
                                             ?></td>
                                         </tr>
                                         <tr>
                                             <td>สำเนาใบเปลี่ยนชื่อ-นามสกุล</td>
                                             <td><?php
-                                                $new = $row["evi_11"];
-                                                echo $new ? "ส่งแล้ว" : "ยังไม่ได้ส่ง";
+                                                echo $row["evi_11"];
                                             ?></td>
                                         </tr>
                                         <tr>

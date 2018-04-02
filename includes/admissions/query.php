@@ -26,72 +26,18 @@ if (mysqli_num_rows($stu_result) > 0) {
     $address_zip        = $row["address_zip"];
     $address_tel        = $row["address_tel"];
 
-    $evi_1              = $row["evi_1"];
-    $evi_2              = $row["evi_2"];
-    $evi_3              = $row["evi_3"];
-    $evi_4              = $row["evi_4"];
-    $evi_5              = $row["evi_5"];
-    $evi_6              = $row["evi_6"];
-    $evi_7              = $row["evi_7"];
-    $evi_10             = $row["evi_10"];
-    $evi_11             = $row["evi_11"];
+    $ev_1              = $row["evi_1"];
+    $ev_2              = $row["evi_2"];
+    $ev_3              = $row["evi_3"];
+    $ev_4              = $row["evi_4"];
+    $ev_5              = $row["evi_5"];
+    $ev_6              = $row["evi_6"];
+    $ev_7              = $row["evi_7"];
+    $ev_10             = $row["evi_10"];
+    $ev_11             = $row["evi_11"];
     $evi_8              = $row["evi_8"];
     $evi_9              = $row["evi_9"];
     $evi_12             = $row["evi_12"];
-
-    if($evi_1 == 0){
-        $ev_1 = "ยังไม่ได้ส่ง";
-    }else if($evi_1 == 1){
-        $ev_1 = "ส่งแล้ว";
-    }
-
-    if($evi_2 == 0){
-        $ev_2 = "ยังไม่ได้ส่ง";
-    }else if($evi_2 == 1){
-        $ev_2 = "ส่งแล้ว";
-    }
-
-    if($evi_3 == 0){
-        $ev_3 = "ยังไม่ได้ส่ง";
-    }else if($evi_3 == 1){
-        $ev_3 = "ส่งแล้ว";
-    }
-
-    if($evi_4 == 0){
-        $ev_4 = "ยังไม่ได้ส่ง";
-    }else if($evi_4 == 1){
-        $ev_4 = "ส่งแล้ว";
-    }
-
-    if($evi_5 == 0){
-        $ev_5 = "ยังไม่ได้ส่ง";
-    }else if($evi_5 == 1){
-        $ev_5 = "ส่งแล้ว";
-    }
-
-    if($evi_6 == 0){
-        $ev_6 = "ยังไม่ได้ส่ง";
-    }else if($evi_6 == 1){
-        $ev_6 = "ส่งแล้ว";
-    }
-
-    if($evi_7 == 0){
-        $ev_7 = "ยังไม่ได้ส่ง";
-    }else if($evi_7 == 1){
-        $ev_7 = "ส่งแล้ว";
-    }
-
-    if($evi_10 == 0){
-        $ev_10 = "ยังไม่ได้ส่ง";
-    }else if($evi_10 == 1){
-        $ev_10 = "ส่งแล้ว";
-    }
-
-    if($evi_11 == 0){
-        $ev_11 = "ยังไม่ได้ส่ง";
-    }else if($evi_11 == 1){
-        $ev_11 = "ส่งแล้ว";
-    }
 
     $sibling_total      = $row["sibling_total"];
     $sibling_o_bro      = $row["sibling_o_bro"];
@@ -180,17 +126,17 @@ if (mysqli_num_rows($stu_result) > 0) {
     $address_zip = "-";
     $address_tel = "-";
 
-    $evi_1 = "-";
-    $evi_2 = "-";
-    $evi_3 = "-";
-    $evi_4 = "-";
-    $evi_5 = "-";
-    $evi_6 = "-";
-    $evi_7 = "-";
+    $ev_1 = "-";
+    $ev_2 = "-";
+    $ev_3 = "-";
+    $ev_4 = "-";
+    $ev_5 = "-";
+    $ev_6 = "-";
+    $ev_7 = "-";
     $evi_8 = "-";
     $evi_9 = "-";
-    $evi_10 = "-";
-    $evi_11 = "-";
+    $ev_10 = "-";
+    $ev_11 = "-";
     $evi_12 = "-";
 
     $sibling_total = "-";

@@ -78,7 +78,8 @@ FROM
 	INNER JOIN occupations AS f ON p.parent_f_occupation = f.occupation_id
 	INNER JOIN occupations AS m ON p.parent_m_occupation = m.occupation_id;
 
-SELECT
+CREATE VIEW `pst_admission`.`evi_view` AS SELECT
+	evi.evi_id,
     one.evid_detail AS evd1,
     two.evid_detail AS evd2,
     thr.evid_detail AS evd3,
@@ -93,15 +94,15 @@ SELECT
     evi.evi_12
 FROM
 eviedence AS evi
-    RIGHT JOIN evid_detail AS one ON evi.evi_1 = one.evid_id
-    RIGHT JOIN evid_detail AS two ON evi.evi_2 = two.evid_id 
-    RIGHT JOIN evid_detail AS thr ON evi.evi_3 = thr.evid_id 
-    RIGHT JOIN evid_detail AS fore ON evi.evi_4 = fore.evid_id 
-    RIGHT JOIN evid_detail AS fiv ON evi.evi_5 = fiv.evid_id 
-    RIGHT JOIN evid_detail AS six ON evi.evi_6 = six.evid_id 
-    RIGHT JOIN evid_detail AS sev ON evi.evi_7 = sev.evid_id 
-    RIGHT JOIN evid_detail AS ten ON evi.evi_10 = ten.evid_id 
-    RIGHT JOIN evid_detail AS elv ON evi.evi_11 = elv.evid_id
+    left JOIN evid_detail AS one ON evi.evi_1 = one.evid_id
+    left JOIN evid_detail AS two ON evi.evi_2 = two.evid_id 
+    left JOIN evid_detail AS thr ON evi.evi_3 = thr.evid_id 
+    left JOIN evid_detail AS fore ON evi.evi_4 = fore.evid_id 
+    left JOIN evid_detail AS fiv ON evi.evi_5 = fiv.evid_id 
+    left JOIN evid_detail AS six ON evi.evi_6 = six.evid_id 
+    left JOIN evid_detail AS sev ON evi.evi_7 = sev.evid_id 
+    left JOIN evid_detail AS ten ON evi.evi_10 = ten.evid_id 
+    left JOIN evid_detail AS elv ON evi.evi_11 = elv.evid_id
 
 CREATE VIEW `pst_admission`.`parentview` AS SELECT
 	g.guardian_id,
@@ -153,108 +154,108 @@ FROM
 	INNER JOIN school AS S ON N.naktham_school = S.school_id
 	INNER JOIN naktham_level AS NL ON N.naktham_level = NL.naktham_l_id
 
-CREATE VIEW `pst_admission`.`newstu_view` AS SELECT
-    N.newstu_id,
-    N.newstu_titlename,
-    N.newstu_name,
-    N.newstu_lastname,
-    N.newstu_chaya,
-    N.newstu_petname,
-    N.newstu_dob,
-    N.newstu_bgroup,
-    N.newstu_weight,
-    N.newstu_height,
-    N.newstu_nationalid,
-    N.newstu_houseno,
-    N.newstu_photo,
-    N.created_at,
-    A.address_no,
-    A.address_moo,
-    A.address_house,
-    A.address_tambol,
-    A.address_district,
-    A.address_provience,
-    A.address_zip,
-    A.address_tel,
-    E.evi_1,
-    E.evi_2,
-    E.evi_3,
-    E.evi_4,
-    E.evi_5,
-    E.evi_6,
-    E.evi_7,
-    E.evi_8,
-    E.evi_9,
-    E.evi_10,
-    E.evi_11,
-    E.evi_12,
-    S.sibling_total,
-    S.sibling_o_bro,
-    S.sibling_l_bro,
-    S.sibling_o_sis,
-    S.sibling_l_sis,
-    S.newstut_status,
-    W.wat_name,
-    W.wat_tambol,
-    W.wat_district,
-    W.wat_provience,
-    W.wat_postal,
-    W.wat_abbot,
-    W.wat_tel,
-    t.firstname AS typer_firstname,
-    t.lastname AS typer_lastname,
-    U.firstname AS stu_b_fname,
-    U.lastname AS stu_b_lname,
-    C.class_name,
-    P.parent_f_name,
-    P.parent_f_income,
-    P.parent_f_tel,
-    P.FOCC,
-    P.parent_m_name,
-    P.parent_m_income,
-    P.parent_m_tel,
-    P.par_status_des,
-    P.MOCC,
-    PA.pali_year,
-    PA.school_name AS pa_sco_name,
-    PA.school_tambol AS pa_tambol,
-    PA.school_district AS pa_district,
-    PA.school_provience AS pa_provience,
-    PA.pali_l_name,
-    NA.naktham_year,
-    NA.naktham_l_name,
-    NA.school_name AS na_sco_name,
-    NA.school_tambol AS na_tambol,
-    NA.school_district AS na_district,
-    NA.school_provience AS na_provience,
-    G.guardian_name,
-    G.guardian_income,
-    G.guardian_tel,
-    G.guardian_national_id,
-    G.guardian_relation,
-    G.occupation_name,
-    ED.class_name AS edu_class,
-    ED.school_name AS edu_sco_name,
-    ED.school_tambol AS edu_tambol,
-    ED.school_district AS edu_district,
-    ED.school_provience AS edu_provience,
-    B.subject_name AS best_sub,
-    WO.subject_name AS worst_sub
+CREATE VIEW `psshealt_pst`.`student` AS SELECT
+	N.newstu_id,
+	N.newstu_titlename,
+	N.newstu_name,
+	N.newstu_lastname,
+	N.newstu_chaya,
+	N.newstu_petname,
+	N.newstu_dob,
+	N.newstu_bgroup,
+	N.newstu_weight,
+	N.newstu_height,
+	N.newstu_nationalid,
+	N.newstu_houseno,
+	N.newstu_photo,
+	N.created_at,
+	A.address_no,
+	A.address_moo,
+	A.address_house,
+	A.address_tambol,
+	A.address_district,
+	A.address_provience,
+	A.address_zip,
+	A.address_tel,
+	E.evd1 AS evi_1,
+	E.evd2 AS evi_2,
+	E.evd3 AS evi_3,
+	E.evd4 AS evi_4,
+	E.evd5 AS evi_5,
+	E.evd6 AS evi_6,
+	E.evd7 AS evi_7,
+	E.evi_8 AS evi_8,
+	E.evi_9 AS evi_9,
+	E.evd10 AS evi_10,
+	E.evd11 AS evi_11,
+	E.evi_12 AS evi_12,
+	S.sibling_total,
+	S.sibling_o_bro,
+	S.sibling_l_bro,
+	S.sibling_o_sis,
+	S.sibling_l_sis,
+	S.newstut_status,
+	W.wat_name,
+	W.wat_tambol,
+	W.wat_district,
+	W.wat_provience,
+	W.wat_postal,
+	W.wat_abbot,
+	W.wat_tel,
+	t.firstname AS typer_firstname,
+	t.lastname AS typer_lastname,
+	U.firstname AS stu_b_fname,
+	U.lastname AS stu_b_lname,
+	C.class_name,
+	P.parent_f_name,
+	P.parent_f_income,
+	P.parent_f_tel,
+	P.FOCC,
+	P.parent_m_name,
+	P.parent_m_income,
+	P.parent_m_tel,
+	P.par_status_des,
+	P.MOCC,
+	PA.pali_year,
+	PA.school_name AS pa_sco_name,
+	PA.school_tambol AS pa_tambol,
+	PA.school_district AS pa_district,
+	PA.school_provience AS pa_provience,
+	PA.pali_l_name,
+	NA.naktham_year,
+	NA.naktham_l_name,
+	NA.school_name AS na_sco_name,
+	NA.school_tambol AS na_tambol,
+	NA.school_district AS na_district,
+	NA.school_provience AS na_provience,
+	G.guardian_name,
+	G.guardian_income,
+	G.guardian_tel,
+	G.guardian_national_id,
+	G.guardian_relation,
+	G.occupation_name,
+	ED.class_name AS edu_class,
+	ED.school_name AS edu_sco_name,
+	ED.school_tambol AS edu_tambol,
+	ED.school_district AS edu_district,
+	ED.school_provience AS edu_provience,
+	B.subject_name AS best_sub,
+	WO.subject_name AS worst_sub,
+	notice.notice_name 
 FROM
-    newstudent AS N
-    LEFT JOIN address AS A ON N.newstu_address_id = A.address_id
-    LEFT JOIN eviedence AS E ON N.newstu_evi_id = E.evi_id
-    LEFT JOIN siblings AS S ON N.newstu_sibling_id = S.sibling_id
-    LEFT JOIN wats AS W ON N.newstu_wat_id = W.wat_id
-    LEFT JOIN users AS t ON N.typer = t.user_id
-    LEFT JOIN users AS U ON N.newstu_user_id = U.user_id
-    LEFT JOIN class AS C ON N.newstu_admit_class = C.class_id
-    LEFT JOIN parentviews AS P ON N.newstu_parents_id = P.parent_id
-    LEFT JOIN paliviews AS PA ON N.newstu_pali_id = PA.pali_id
-    LEFT JOIN nakthamviews AS NA ON N.newstu_naktham_id = NA.naktham_id
-    LEFT JOIN guardianviews AS G ON N.newstu_guardian_id = G.guardian_id
-    LEFT JOIN edudationview AS ED ON N.newstu_education_id = ED.education_id
-    LEFT JOIN subjects AS B ON N.newstu_best_sub = B.subject_id 
-    LEFT JOIN subjects AS WO ON N.newstu_worst_sub = WO.subject_id
-
-
+	newstudent AS N
+	LEFT JOIN address AS A ON N.newstu_address_id = A.address_id
+	LEFT JOIN siblings AS S ON N.newstu_sibling_id = S.sibling_id
+	LEFT JOIN wats AS W ON N.newstu_wat_id = W.wat_id
+	LEFT JOIN users AS t ON N.typer = t.user_id
+	LEFT JOIN users AS U ON N.newstu_user_id = U.user_id
+	LEFT JOIN class AS C ON N.newstu_admit_class = C.class_id
+	LEFT JOIN parentviews AS P ON N.newstu_parents_id = P.parent_id
+	LEFT JOIN paliviews AS PA ON N.newstu_pali_id = PA.pali_id
+	LEFT JOIN nakthamviews AS NA ON N.newstu_naktham_id = NA.naktham_id
+	LEFT JOIN guardianviews AS G ON N.newstu_guardian_id = G.guardian_id
+	LEFT JOIN edudationview AS ED ON N.newstu_education_id = ED.education_id
+	LEFT JOIN subjects AS B ON N.newstu_best_sub = B.subject_id
+	LEFT JOIN subjects AS WO ON N.newstu_worst_sub = WO.subject_id
+	LEFT JOIN evi_view AS E ON N.newstu_evi_id = E.evi_id
+    LEFT JOIN notice ON N.newstu_get_notice_from = notice.notice_id

@@ -114,7 +114,7 @@ $pdf->SetFont('thsarabun', '', 14, '', true);
 
 if(isset($_GET["newstu"])){
         $detail_id = $_GET["newstu"];
-        $new_stu = "SELECT * FROM `newstu_view` WHERE newstu_id = '$detail_id'";
+        $new_stu = "SELECT * FROM `student` WHERE newstu_id = '$detail_id'";
         $stu_result = mysqli_query($connection, $new_stu);
         include_once ('admissions/query.php');
     

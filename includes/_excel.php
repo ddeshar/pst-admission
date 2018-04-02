@@ -134,7 +134,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 
 // Write data from MySQL result
 include_once 'db.php';
-$strSQL = "SELECT * FROM newstu_view";
+$strSQL = "SELECT * FROM student";
 
 $objQuery = mysqli_query($connection, $strSQL);
 $i = 2;
