@@ -17,8 +17,12 @@
     </div>
     <br>
     <div class="col-lg-3 input_field_sections">
-        <h5><code>ชื่อหนำหน้า * </code> </h5>        
-            <input name="newstu_titlename" value="" placeholder="" type="text" class="form-control " required/>
+        <h5>ชื่อหนำหน้า * </h5>
+        <select class="form-control" name="newstu_titlename">
+            <option value="-"></option>
+            <option value="พระ">พระ</option>
+            <option value="สามเณร">สามเณร</option>
+        </select>
     </div>
     <div class="col-lg-3 input_field_sections">
         <h5><code>ชื่อ *</code></h5>

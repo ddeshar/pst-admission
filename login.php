@@ -28,7 +28,7 @@ require 'includes/db.php';
         }elseif ($row_user['status'] == 100) {
           $_SESSION['is_member'] = 100;
           $_SESSION['login_username'] = $row_user['login_username'];
-          header("Location: admission.php?source=add");
+          header("Location: index.php");
 
         }elseif ($row_user['status'] == 0) {
           $_SESSION['is_user'] = 0;

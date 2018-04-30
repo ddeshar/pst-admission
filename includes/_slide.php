@@ -13,12 +13,18 @@
             <!-- #menu -->
             <ul id="menu" class="bg-blue dker">
                 <?php
-                    if ( $s_login_status == 500 ){
+                    if ( $s_login_status == 500 || $s_login_status == 100 ){
                 ?>
                 <li class="active">
                     <a href="index.php">
                         <i class="fa fa-home"></i>
                         <span class="link-title">&nbsp;แผงควบคุม</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="chart.php">
+                        <i class="fa fa-home"></i>
+                        <span class="link-title">&nbsp;Chart</span>
                     </a>
                 </li>
                 <?php
@@ -39,6 +45,15 @@
                     <a href="admission.php">
                         <i class="fa fa-database"></i>
                         <span class="link-title">&nbsp;ข้อมูลสถิติรับสมัคร</span>
+                    </a>
+                </li>
+                <?php } 
+                    if ( $s_login_status == 500 ){
+                ?>
+                <li>
+                    <a href="users.php">
+                        <i class="fa fa-database"></i>
+                        <span class="link-title">&nbsp;Users</span>
                     </a>
                 </li>
                 <?php } ?>

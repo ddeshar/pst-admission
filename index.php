@@ -9,7 +9,17 @@ EOD;
     include "includes/_nav.php";
     include "includes/_slide.php";
     include "includes/_count.php";
+
+    include_once 'includes/_chart.php';
+
     include "includes/function.php";
+
+    $ptom = ( $ton / $total ) * 100;
+    $pplai = ( $plai / $total ) * 100;
+
+// $ton 
+// $plai
+// $total
 ?>
         <!-- /#left -->
         <div id="content" class="bg-container">
@@ -27,11 +37,10 @@ EOD;
             </header>
             <div class="outer">
                 <div class="inner bg-container">
-                    <form action="" method="post">
                         <div class="row">
-                            <div class="col-xl-12 col-12">
+                            <div class="col-xl-6 col-lg-7 col-12">
                                 <div class="row">
-                                    <div class="col-sm-6 col-12 col-lg-3">
+                                    <div class="col-sm-6 col-12">
                                         <div class="bg-primary top_cards">
                                             <div class="row icon_margin_left">
 
@@ -45,187 +54,176 @@ EOD;
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
-                                                        <span class="number_val" id="sales_count"></span>
-                                                        <i class="fa fa-long-arrow-up fa-2x"></i> <?=$total?> รูป
-                                                        <br/>
-                                                        <span class="card_description">จำนวนนักเรียน</span>
+                                                    <span class="number_val" id="sales_count"></span>
+                                                            <i class="fa fa-long-arrow-up fa-2x"></i> <?=$total?> รูป
+                                                            <br/>
+                                                            <span class="card_description">จำนวนนักเรียน</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-12 col-lg-3">
+                                    <div class="col-sm-6 col-12">
                                         <div class="bg-success top_cards">
                                             <div class="row icon_margin_left">
                                                 <div class="col-lg-5  col-5 icon_padd_left">
                                                     <div class="float-left">
-                                                        <span class="fa-stack fa-sm">
-                                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                                        <i class="fa fa-user fa-stack-1x fa-inverse text-success visit_icon"></i>
-                                                        </span>
+                                                    <span class="fa-stack fa-sm">
+                                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                                            <i class="fa fa-user fa-stack-1x fa-inverse text-success visit_icon"></i>
+                                                            </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
-                                                        <span class="number_val" id="visitors_count"></span><i
-                                                            class="fa fa-long-arrow-up fa-2x"></i> <?=$ton?> รูป
-                                                        <br/>
-                                                        <span class="card_description">ม.ต้น</span>
+                                                    <span class="number_val" id="visitors_count"></span><i
+                                                                class="fa fa-long-arrow-up fa-2x"></i> <?=$ton?> รูป
+                                                            <br/>
+                                                            <span class="card_description">ม.ต้น</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-12 col-lg-3">
+                                    <div class="col-sm-6 col-12">
                                         <div class="bg-warning top_cards">
                                             <div class="row icon_margin_left">
                                                 <div class="col-lg-5 col-5 icon_padd_left">
                                                     <div class="float-left">
-                                                        <span class="fa-stack fa-sm">
-                                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                                        <i class="fa fa-user fa-stack-1x fa-inverse text-warning revenue_icon"></i>
-                                                        </span>
+                                                    <span class="fa-stack fa-sm">
+                                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                                            <i class="fa fa-user fa-stack-1x fa-inverse text-warning revenue_icon"></i>
+                                                            </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
-                                                        <span class="number_val" id="revenue_count"></span><i
-                                                            class="fa fa-long-arrow-up fa-2x"></i> <?=$plai?> รูป
-                                                        <br/>
-                                                        <span class="card_description">ม.ปลาย</span>
+                                                    <span class="number_val" id="revenue_count"></span><i
+                                                                class="fa fa-long-arrow-up fa-2x"></i> <?=$plai?> รูป
+                                                            <br/>
+                                                            <span class="card_description">ม.ปลาย</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-12 col-lg-3">
+                                    <!-- <div class="col-sm-6 col-12">
                                         <div class="bg-mint top_cards">
                                             <div class="row icon_margin_left">
                                                 <div class="col-lg-5 col-5 icon_padd_left">
                                                     <div class="float-left">
-                                                        <span class="fa-stack fa-sm">
-                                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                                        <i class="fa fa-users  fa-stack-1x fa-inverse text-mint sub"></i>
-                                                        </span>
+                                                    <span class="fa-stack fa-sm">
+                                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                                            <i class="fa fa-users  fa-stack-1x fa-inverse text-mint sub"></i>
+                                                            </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-7 col-7 icon_padd_right">
                                                     <div class="float-right cards_content">
-                                                        <span class="number_val" id="subscribers_count"></span><i
-                                                            class="fa fa-long-arrow-down fa-2x"></i> - รูป
-                                                        <br/>
-                                                        <span class="card_description">แนะนำจากรุ่นพี</span>
+                                                    <span class="number_val" id="subscribers_count"></span><i
+                                                                class="fa fa-long-arrow-down fa-2x"></i> - รูป
+                                                            <br/>
+                                                            <span class="card_description">พามาสมัคร</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-
-                            <!-- <div class="col-lg-4 col-12 m-t-35">
+                            <div class="col-xl-6 col-lg-7 col-12">
                                 <div class="card">
                                     <div class="card-header bg-white">
-                                        This Month
+                                        สรุปการรับสมัครนักเรียนใหม่ ปีการศึกษา 2561
                                     </div>
                                     <div class="card-body">
                                         <div class="task-item">
 
-                                            Sales
-                                            <span class="float-right text-muted progress-info">52%</span>
+                                            ม.ต้น
+                                            <span class="float-right text-muted progress-info"><?=$ton ?> รูป</span>
                                             <div id="progress-bar">
-                                                <progress class="progress progress-danger" value="52"
-                                                max="100"></progress>
+                                                <!--<progress class="progress progress-danger" value="52"-->
+                                                <!--max="100"></progress>-->
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: <?=$ptom?>%;" aria-valuenow="<?=$ptom?>" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="task-item">
-                                            Projects
-                                            <span class="float-right text-muted progress-primary">80%</span>
+                                            ม.ปลาย
+                                            <span class="float-right text-muted progress-primary"><?=$plai ?> รูป</span>
                                             <div id="progress-bar1">
-                                                <progress class="progress progress-warning" value="80"
-                                                max="100"></progress>
+                                                <!--<progress class="progress progress-warning" value="80"-->
+                                                <!--max="100"></progress>-->
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?=$pplai?>%;" aria-valuenow="<?=$pplai?>" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="task-item">
-                                            Visitors
-                                            <span class="float-right text-muted progress-warning">25%</span>
+                                            รวม
+                                            <span class="float-right text-muted progress-warning"><?=$total ?> รูป</span>
                                             <div id="progress-bar21">
-                                                <progress class="progress progress-success" value="25"
-                                                max="100"></progress>
+                                                <!--<progress class="progress progress-success" value="25"-->
+                                                <!--max="100"></progress>-->
                                                 <div class="progress" id="progress-bar2">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="task-item">
-                                            New Users
-                                            <span class="float-right text-muted progress-primary">93%</span>
-                                            <div id="progress-bar5">
-                                                <progress class="progress progress-primary" value="93" max="100"></progress>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="task-item">
-                                            Revenue
-                                            <span class="float-right text-muted progress-danger">50%</span>
-                                            <div id="progress-bar3">
-                                                <progress class="progress progress-danger" value="50" max="100"></progress>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="task-item">
-                                            Total sold
-                                            <span class="float-right text-muted">40%</span>
-                                            <div id="progress-bar4">
-                                                <progress class="progress progress-mint" value="40" max="100"></progress>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                        <br>
+
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+
+                        <div class="row">
 
                             <div class="col-lg-4 col-12 m-t-35">
                                 <div class="block widget-notes">
                                     <div class="card" id="notes_section">
                                         <div class="card-header bg-white">
-                                            Notes
+                                            สรุปการรับสมัครนักเรียนใหม่ ปีการศึกษา 61 ตามจังหวัด
                                         </div>
-                                        <div class="content">
+                                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="content" style="overflow: hidden; width: auto; height: 300px;">
                                             <div class="notes" contenteditable="true">
                                                 <div>
-                                                    <a href="http://pstadmission.woc/dashboard.php">sss</a>
-                                                    <br> Sometimes on purpose
-                                                    <br>
-                                                    It is a long established
-                                                    <br> Contrary to popular belief.
-                                                    <br> <i>Bootstrap4 admire admin</i>
-                                                    <br>Company status
-                                                    <br> Sometime is special
-                                                    <br> <b>Meeting with CEO</b>
-                                                    <br> Team out
-                                                    <br> welcome to admire
-
+                                                <?php while($row = mysqli_fetch_array($result1)){  
+                                                    echo "".$row["provience"]."  ".$row["stu"]." รูป";
+                                                    echo "<br>";
+                                                } ?> 
+                            
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 5px; position: absolute; top: 0px; opacity: 0.2; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                        <br>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
+                            
+                            <div class="col-lg-4 col-12 m-t-35">
+                                <div class="block widget-notes">
+                                    <div class="card" id="notes_section">
+                                        <div class="card-header bg-white">
+                                            สรุปการรับสมัครนักเรียนใหม่ ปีการศึกษา 61 ตามสังกัดวัด
+                                        </div>
+                                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="content" style="overflow: hidden; width: auto; height: 300px;">
+                                            <div class="notes" contenteditable="true">
+                                                <div>
+                                                    <?php while($row = mysqli_fetch_array($wats)){  
+                                                        echo "".$row["wat"]."  ".$row["stud"]." รูป";
+                                                        echo "<br>";
+                                                    } ?>
+                                                </div>
+                                            </div>
+                                        </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 5px; position: absolute; top: 0px; opacity: 0.2; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-lg-4 col-12 m-t-35">
                                 <div class="card">
@@ -237,7 +235,7 @@ EOD;
                                     <div class="card-block twitter_section">
                                         <ul id="nt-example1">
                                         <?php 
-                                            $strSQL = "SELECT * FROM `newstudent`  ORDER BY `newstudent`.`newstu_id` DESC LIMIT 10 ";
+                                            $strSQL = "SELECT * FROM `newstudent`  ORDER BY `newstudent`.`newstu_id` DESC LIMIT 5 ";
                                             $new_stusent = mysqli_query($connection, $strSQL);
 
                                             while($student_new = mysqli_fetch_array($new_stusent)){
@@ -271,17 +269,15 @@ EOD;
                                                 mysqli_close($connection);
                                             ?>
                                         </ul>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
 
                         </div>          
-                    </form>         
                     <!-- /.inner -->
                 </div>
                 <!-- /.outer -->
             </div>
-        </div>
         <!-- /#content -->
 
 <?php

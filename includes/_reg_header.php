@@ -1,11 +1,5 @@
 <?php 
     include_once 'includes/db.php';
-    
-    include 'includes/session.php';
-    if(isset($_SESSION['user_id'])) {
-    } else {
-      header("location: login.php");
-    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -18,12 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="shortcut icon" href="assets/img/logo1.ico"/> -->
     <!-- global styles-->
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Kanit', sans-serif !important;;
-      }
-    </style>
     <link type="text/css" rel="stylesheet" href="assets/css/components.css"/>
     <link type="text/css" rel="stylesheet" href="assets/css/custom.css"/>
     <?=$global_scripts_css?>

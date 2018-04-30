@@ -26,7 +26,7 @@
             <!-- .navbar -->
             <nav class="navbar navbar-static-top">
                 <div class="container-fluid m-0">
-                    <a class="navbar-brand float-left text-center" href="index.html">
+                    <a class="navbar-brand float-left text-center" href="index.php">
                         <h4 class="text-white"><img src="assets/img/logow.png" class="admin_img" alt="logo"> PST | ADMISSION</h4>
                     </a>
                     <div class="menu">
