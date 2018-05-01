@@ -188,44 +188,93 @@ EOD;
                                         <div class="card-header bg-white">
                                             สรุปการรับสมัครนักเรียนใหม่ ปีการศึกษา 61 ตามจังหวัด
                                         </div>
-                                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="content" style="overflow: hidden; width: auto; height: 300px;">
-                                            <div class="notes" contenteditable="true">
-                                                <div>
-                                                <?php while($row = mysqli_fetch_array($result1)){  
-                                                    echo "".$row["provience"]."  ".$row["stu"]." รูป";
-                                                    echo "<br>";
-                                                } ?> 
-                            
-                                                </div>
-                                            </div>
+                                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
+                                        <div class="content" style="overflow: hidden; width: auto; height: auto;">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>จังหวัด</th>
+                                                        <th>ม ๑</th>
+                                                        <th>ม ๒</th>
+                                                        <th>ม ๓</th>
+                                                        <th>ม ๔</th>
+                                                        <th>ม ๕</th>
+                                                        <th>ม ๖</th>
+                                                        <th>รวม</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php while($row = mysqli_fetch_array($result1)){ ?>                   
+                                                    <tr>
+                                                        <td><?=$row["provience"]?></td>
+                                                        <td><?=$row["one"]?></td>
+                                                        <td><?=$row["two"]?></td>
+                                                        <td><?=$row["three"]?></td>
+                                                        <td><?=$row["four"]?></td>
+                                                        <td><?=$row["five"]?></td>
+                                                        <td><?=$row["six"]?></td>
+                                                        <td><?=$row["stu"]?></td>
+                                                    </tr>
+                                                    <?php } ?> 
+                                                    <tr>
+                                                        <td colspan="7">รวม</td>
+                                                        <td><?=$total?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 5px; position: absolute; top: 0px; opacity: 0.2; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
                                         <br>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="col-lg-4 col-12 m-t-35">
+                            <div class="col-lg-5 col-12 m-t-35">
                                 <div class="block widget-notes">
                                     <div class="card" id="notes_section">
                                         <div class="card-header bg-white">
                                             สรุปการรับสมัครนักเรียนใหม่ ปีการศึกษา 61 ตามสังกัดวัด
                                         </div>
-                                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="content" style="overflow: hidden; width: auto; height: 300px;">
-                                            <div class="notes" contenteditable="true">
-                                                <div>
-                                                    <?php while($row = mysqli_fetch_array($wats)){  
-                                                        echo "".$row["wat"]."  ".$row["stud"]." รูป";
-                                                        echo "<br>";
-                                                    } ?>
-                                                </div>
-                                            </div>
+                                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
+                                        <div class="content" style="overflow: hidden; width: auto; height: auto;">
+                                        <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>จังหวัด</th>
+                                                        <th>ม ๑</th>
+                                                        <th>ม ๒</th>
+                                                        <th>ม ๓</th>
+                                                        <th>ม ๔</th>
+                                                        <th>ม ๕</th>
+                                                        <th>ม ๖</th>
+                                                        <th>รวม</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php while($row = mysqli_fetch_array($wats)){ ?>                   
+                                                    <tr>
+                                                        <td><?=$row["wat"]?></td>
+                                                        <td><?=$row["one"]?></td>
+                                                        <td><?=$row["two"]?></td>
+                                                        <td><?=$row["three"]?></td>
+                                                        <td><?=$row["four"]?></td>
+                                                        <td><?=$row["five"]?></td>
+                                                        <td><?=$row["six"]?></td>
+                                                        <td><?=$row["stud"]?></td>
+                                                    </tr>
+                                                    <?php } ?> 
+                                                    <tr>
+                                                        <td colspan="7">รวม</td>
+                                                        <td><?=$total?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 5px; position: absolute; top: 0px; opacity: 0.2; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
                                         <br>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-12 m-t-35">
+                            <div class="col-lg-3 col-12 m-t-35">
                                 <div class="card">
                                     <div class="card-header bg-white">
                                         <div class=" twitter_section_head">
@@ -279,6 +328,7 @@ EOD;
                 <!-- /.outer -->
             </div>
         <!-- /#content -->
+
 
 <?php
 $global_scripts_js = <<<EOD
